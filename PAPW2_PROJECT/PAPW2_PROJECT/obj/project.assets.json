@@ -5565,11 +5565,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Michelle Chiu Gonzal\\Documents\\8Sem\\PAPW2\\PAPW2_PROJECT\\PAPW2_PROJECT\\PAPW2_PROJECT.csproj",
+      "projectUniqueName": "C:\\Users\\Michelle Chiu Gonzal\\Documents\\8Sem\\PAPW2\\PROJECT\\PAPW2_PROJECT\\PAPW2_PROJECT\\PAPW2_PROJECT.csproj",
       "projectName": "PAPW2_PROJECT",
-      "projectPath": "C:\\Users\\Michelle Chiu Gonzal\\Documents\\8Sem\\PAPW2\\PAPW2_PROJECT\\PAPW2_PROJECT\\PAPW2_PROJECT.csproj",
+      "projectPath": "C:\\Users\\Michelle Chiu Gonzal\\Documents\\8Sem\\PAPW2\\PROJECT\\PAPW2_PROJECT\\PAPW2_PROJECT\\PAPW2_PROJECT.csproj",
       "packagesPath": "C:\\Users\\Michelle Chiu Gonzal\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Michelle Chiu Gonzal\\Documents\\8Sem\\PAPW2\\PAPW2_PROJECT\\PAPW2_PROJECT\\obj\\",
+      "outputPath": "C:\\Users\\Michelle Chiu Gonzal\\Documents\\8Sem\\PAPW2\\PROJECT\\PAPW2_PROJECT\\PAPW2_PROJECT\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Michelle Chiu Gonzal\\AppData\\Roaming\\NuGet\\NuGet.Config",
