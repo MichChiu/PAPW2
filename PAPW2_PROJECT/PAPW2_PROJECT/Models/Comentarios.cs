@@ -18,5 +18,12 @@ namespace PAPW2_PROJECT.Models
         public virtual Noticias Noticias { get; set; }
 
         public virtual Usuarios Usuarios { get; set; }
+
+        public virtual ICollection<Comentario_Respuestas> Comentario_Respuestas { get; set; }
+
+        public virtual ICollection<NoticiaComentarios> NoticiaComentarios { get; set; }
+
+        public virtual ICollection<Respuestas> Respuestas { get; set; }
+
     }
 }

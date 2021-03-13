@@ -18,5 +18,7 @@ namespace PAPW2_PROJECT.Models
         public virtual Comentarios Comentarios { get; set; }
 
         public virtual Usuarios Usuarios { get; set; }
+        public virtual ICollection<Comentario_Respuestas> Comentario_Respuestas { get; set; }
+
     }
 }

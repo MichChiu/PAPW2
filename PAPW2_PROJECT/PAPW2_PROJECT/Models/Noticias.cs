@@ -16,9 +16,9 @@ namespace PAPW2_PROJECT.Models
         public int coloniaF { get; set; }
 
         public DateTime fecha_Hora_Acontecimiento { get; set; }
-
-        public DateTime fecha_Publicacion { get; set; }
-
+        #nullable enable
+        public DateTime? fecha_Publicacion { get; set; }
+        #nullable disable
         public int autor { get; set; }
 
         public string titulo_Noticia { get; set; }
@@ -32,13 +32,13 @@ namespace PAPW2_PROJECT.Models
         public int seccion_Noticia { get; set; }
 
         public int estatus_Noticia { get; set; }
+        #nullable enable
+        public int? likes { get; set; }
 
-        public int likes { get; set; }
+        public int? visitas { get; set; }
 
-        public int visitas { get; set; }
-
-        public string comentarios_editor { get; set; } //no sigue el formato de nombres, tampoco en sql
-
+        public string? comentarios_editor { get; set; } //no sigue el formato de nombres, tampoco en sql
+        #nullable disable
         public virtual Secciones Secciones { get; set; }
 
         public virtual Estatus Estatus { get; set; }
@@ -50,6 +50,17 @@ namespace PAPW2_PROJECT.Models
         public virtual Colonias Colonias { get; set; }
 
         public virtual Usuarios Usuarios { get; set; }
+
+        public virtual ICollection<Comentarios> Comentarios { get; set; }
+
+        public virtual ICollection<Imagenes> Imagenes { get; set; }
+
+        public virtual ICollection<LikesUsuarios> LikesUsuarios { get; set; }
+
+        public virtual ICollection<NoticiaComentarios> NoticiaComentarios { get; set; }
+
+        public virtual ICollection<Videos> Videos { get; set; }
+
 
     }
 }

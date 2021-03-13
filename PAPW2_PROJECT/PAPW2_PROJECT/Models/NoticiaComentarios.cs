@@ -7,7 +7,7 @@ namespace PAPW2_PROJECT.Models
 {
     public class NoticiaComentarios
     {
-        public int iD_NotifiasF { get; set; }
+        public int iD_NoticiasF { get; set; }
 
         public int iD_ComentarioF { get; set; }
 

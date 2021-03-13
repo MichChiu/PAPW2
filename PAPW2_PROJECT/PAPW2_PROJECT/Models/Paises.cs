@@ -8,8 +8,13 @@ namespace PAPW2_PROJECT.Models
     public class Paises
     {
         public int iD_Pais { get; set; }
+        #nullable enable
+        public string? nombre_Pais { get; set; }
+        #nullable disable
+        public virtual ICollection<Ciudades> Ciudades { get; set; }
+        public virtual ICollection<Noticias> Noticias { get; set; }
 
-        public string nombre_Pais { get; set; }
+
 
     }
 }

@@ -11,7 +11,9 @@ namespace PAPW2_PROJECT.Models
 
         public int iD_Noticia { get; set; }
 
-        public byte[] imagen_URL { get; set; }
+        #nullable enable
+        public byte[]? imagen_URL { get; set; }
+        #nullable disable
 
         public virtual Noticias Noticias { get; set; }
     }

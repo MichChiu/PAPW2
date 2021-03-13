@@ -120,7 +120,7 @@ namespace PAPW2_PROJECT.Models
                 .HasMaxLength(100)
                 .IsUnicode();
                 ciudades
-                .HasOne(e => e.Pais)
+                .HasOne(e => e.Paises)
                 .WithMany(y => y.Ciudades)
                 .HasForeignKey("const_Pais");
 
@@ -184,33 +184,33 @@ namespace PAPW2_PROJECT.Models
                   .IsUnicode(false);
 
                 noticias
-                .HasOne(e => e.Noticias)
-                .WithOne(y => y.Secciones)
+                .HasOne(e => e.Secciones)
+                .WithMany(y => y.Noticias)
                 .HasForeignKey("const_SeccionN");
 
                 noticias
-                .HasOne(e => e.Noticias)
-                .WithOne(y => y.Estatus)
+                .HasOne(e => e.Estatus)
+                .WithMany(y => y.Noticias)
                 .HasForeignKey("const_EstatusN");
 
                 noticias
-               .HasOne(e => e.Noticias)
-               .WithOne(y => y.Paises)
+               .HasOne(e => e.Paises)
+               .WithMany(y => y.Noticias)
                .HasForeignKey("const_PaisN");
 
                 noticias
-                .HasOne(e => e.Noticias)
-                .WithOne(y => y.Ciudades)
+                .HasOne(e => e.Ciudades)
+                .WithMany(y => y.Noticias)
                 .HasForeignKey("const_CiudadN");
 
                 noticias
-                .HasOne(e => e.Noticias)
-                .WithOne(y => y.Colonias)
+                .HasOne(e => e.Colonias)
+                .WithMany(y => y.Noticias)
                 .HasForeignKey("const_ColoniaN");
 
                 noticias
-                .HasOne(e => e.Noticias)
-                .WithOne(y => y.Usuarios)
+                .HasOne(e => e.Usuarios)
+                .WithMany(y => y.Noticias)
                 .HasForeignKey("const_AutN");
             });
 
@@ -222,11 +222,11 @@ namespace PAPW2_PROJECT.Models
                 .IsRequired();
                 likesusuarios
                 .HasOne(e => e.Noticias)
-                .WithOne(y => y.LikesUsuarios)
+                .WithMany(y => y.LikesUsuarios)
                 .HasForeignKey("const_Like_Noti");
                 likesusuarios
                .HasOne(e => e.Usuarios)
-               .WithOne(y => y.LikesUsuarios)
+               .WithMany(y => y.LikesUsuarios)
                .HasForeignKey("const_Like_Usu");
 
             });
@@ -244,11 +244,11 @@ namespace PAPW2_PROJECT.Models
                 .IsRequired();
                 comentarios
                 .HasOne(e => e.Noticias)
-                .WithOne(y => y.Comentarios)
+                .WithMany(y => y.Comentarios)
                 .HasForeignKey("const_QueNoti");
                 comentarios
                .HasOne(e => e.Usuarios)
-               .WithOne(y => y.Comentarios)
+               .WithMany(y => y.Comentarios)
                .HasForeignKey("const_Coment_Aut");
 
             });
@@ -327,7 +327,7 @@ namespace PAPW2_PROJECT.Models
                 .IsUnicode(false);
                 videos
                 .HasOne(e => e.Noticias)
-                .WithOne(y => y.Videos)
+                .WithMany(y => y.Videos)
                 .HasForeignKey("const_Vid_Noti");
             });
 

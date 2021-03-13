@@ -8,7 +8,11 @@ namespace PAPW2_PROJECT.Models
     public class Estatus
     {
         public int iD_Estatus { get; set; }
+        #nullable enable
+        public string? nombre_Estatus { get; set; }
+        #nullable disable
 
-        public string nombre_Estatus { get; set; }
+        public virtual ICollection<Noticias> Noticias { get; set; }
+
     }
 }

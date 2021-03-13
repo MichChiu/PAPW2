@@ -12,9 +12,13 @@ namespace PAPW2_PROJECT.Models
         public string nombre_Seccion { get; set; }
 
         public int color { get; set; }
-
-        public int pos { get; set; }
+        #nullable enable
+        public int? pos { get; set; }
+        #nullable disable
 
         public virtual Colores Colores { get; set; }
+
+        public virtual ICollection<Noticias> Noticias { get; set; }
+
     }
 }

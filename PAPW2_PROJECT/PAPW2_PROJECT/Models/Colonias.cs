@@ -10,9 +10,12 @@ namespace PAPW2_PROJECT.Models
         public int iD_Colonia { get; set; }
 
         public int iD_CiudadF { get; set; }
-
-        public string nombre_Colonia { get; set; }
-
+        #nullable enable
+        public string? nombre_Colonia { get; set; }
+        #nullable disable
         public virtual Ciudades Ciudades { get; set; }
+
+        public virtual ICollection<Noticias> Noticias { get; set; }
+
     }
 }
