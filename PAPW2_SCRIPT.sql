@@ -1,4 +1,5 @@
 create database PAPW2
+GO
 use PAPW2
 
 create table Perfiles /*#Aqui se almacenan los tipos de perfil, solo habra 3 campos de esta tabla*/
