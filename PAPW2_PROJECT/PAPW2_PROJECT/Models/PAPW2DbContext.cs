@@ -151,9 +151,11 @@ namespace PAPW2_PROJECT.Models
                 noticias.Property(e => e.coloniaF)
                    .IsRequired();
                 noticias.Property(e => e.fecha_Hora_Acontecimiento)
+                    .HasColumnType("datetime")
                     .IsUnicode(false)
                    .IsRequired();
                 noticias.Property(e => e.fecha_Publicacion)
+                    .HasColumnType("datetime")
                     .IsUnicode(false)
                    .IsRequired();
                 noticias.Property(e => e.autor)
