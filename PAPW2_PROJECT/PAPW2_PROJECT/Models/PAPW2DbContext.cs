@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Protocols;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +17,12 @@ namespace PAPW2_PROJECT.Models
         {
 
         }
-        public void OnConfiguring(DbContextOptions optionsBuilder)
+
+        public PAPW2DbContext(DbContextOptions<PAPW2DbContext> options):base(options)
         {
-            
+
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Perfiles>().HasKey(perfiles => perfiles.iD_Perfil);
@@ -66,7 +69,9 @@ namespace PAPW2_PROJECT.Models
                 usuarios
                 .HasOne(e => e.Perfiles)
                 .WithMany(y => y.Usuarios)
-                .HasForeignKey("const_Perfil");
+                .HasForeignKey(e=>e.perfil)
+                //.HasForeignKey("const_Perfil")
+                .OnDelete(DeleteBehavior.ClientCascade);
             });
 
             modelBuilder.Entity<Colores>(colores =>
@@ -90,7 +95,9 @@ namespace PAPW2_PROJECT.Models
                 secciones
                 .HasOne(e => e.Colores)
                 .WithMany(y => y.Secciones)
-                .HasForeignKey("const_Color");
+                .HasForeignKey(e=>e.color)
+                //.HasForeignKey("const_Color")
+                .OnDelete(DeleteBehavior.ClientCascade);
             });
 
             modelBuilder.Entity<Estatus>(estatus =>
@@ -218,6 +225,7 @@ namespace PAPW2_PROJECT.Models
 
             modelBuilder.Entity<LikesUsuarios>(likesusuarios =>
             {
+                likesusuarios.HasKey(e => new { e.iD_NoticiaF, e.iD_UsuarioF });
                 likesusuarios.Property(e => e.iD_NoticiaF)
                 .IsRequired();
                 likesusuarios.Property(e => e.iD_UsuarioF)
@@ -255,24 +263,30 @@ namespace PAPW2_PROJECT.Models
 
             });
 
-            modelBuilder.Entity<NoticiaComentarios>(noticiaComentarios =>
-            {
-                noticiaComentarios.Property(e => e.iD_NoticiasF)
-                .IsRequired();
-                noticiaComentarios.Property(e => e.iD_ComentarioF)
-                .IsRequired();
-                noticiaComentarios.Property(e => e.iD_UsuarioF)
-                .IsRequired();
-                noticiaComentarios
-                .HasOne(e => e.Usuarios)
+          modelBuilder.Entity<NoticiaComentarios>(noticiaComentarios =>
+              {
+                  noticiaComentarios.HasKey(e => new { e.iD_NoticiasF, e.iD_ComentarioF, e.iD_UsuarioF });
+                  noticiaComentarios.Property(e => e.iD_NoticiasF)
+                  .IsRequired();
+                  noticiaComentarios.Property(e => e.iD_ComentarioF)
+                  .IsRequired();
+                  noticiaComentarios.Property(e => e.iD_UsuarioF)
+                  .IsRequired();
+                  noticiaComentarios
+                  .HasOne(e => e.Usuarios)
+                  .WithMany(y => y.NoticiaComentarios)
+                  .HasForeignKey("const_NotiComent_Usu");
+                  noticiaComentarios
+                 .HasOne(e => e.Noticias)
+                 .WithMany(y => y.NoticiaComentarios)
+                 .HasForeignKey("const_NotiComent_Noti");
+                  noticiaComentarios
+                  .HasOne(e => e.Comentarios)
                 .WithMany(y => y.NoticiaComentarios)
-                .HasForeignKey("const_NotiComent_Usu");
-                noticiaComentarios
-               .HasOne(e => e.Noticias)
-               .WithMany(y => y.NoticiaComentarios)
-               .HasForeignKey("const_NotiComent_Noti");
+                .HasForeignKey("const_NotiComent_Coment");
 
-            });
+
+              });
 
             modelBuilder.Entity<Respuestas>(respuestas =>
             {
@@ -295,9 +309,10 @@ namespace PAPW2_PROJECT.Models
                .HasForeignKey("const_Coment_AutRes");
 
             });
-
+           
             modelBuilder.Entity<Comentario_Respuestas>(comentario_Respuestas =>
             {
+                comentario_Respuestas.HasKey(e => new { e.iD_ComentarioF, e.iD_RespuestaF, e.iD_UsuarioF });
                 comentario_Respuestas.Property(e => e.iD_ComentarioF)
                 .IsRequired();
                 comentario_Respuestas.Property(e => e.iD_RespuestaF)
