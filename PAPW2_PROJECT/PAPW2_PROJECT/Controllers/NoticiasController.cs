@@ -1,7 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PAPW2_PROJECT.Classes.Core;
+using PAPW2_PROJECT.Models;
+using PAPW2_PROJECT.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -12,36 +16,104 @@ namespace PAPW2_PROJECT.Controllers
     [ApiController]
     public class NoticiasController : ControllerBase
     {
+        private PAPW2DbContext db;
+        private NoticiasCore noticiasCore;
+
+        public NoticiasController(PAPW2DbContext db)
+        {
+            this.db = db;
+        }
+
         // GET: api/<NoticiasController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            noticiasCore = new NoticiasCore(db);
+            List<Noticias> noticias = noticiasCore.GetAll();
+            return Ok(noticias);
         }
 
-        // GET api/<NoticiasController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<NoticiasController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Create([FromBody] Noticias noticia)
         {
+            try
+            {
+                noticiasCore = new NoticiasCore(db);
+                ResponseApiError responseApiError = noticiasCore.Create(noticia);
+
+                if (responseApiError != null)
+                {
+                    return StatusCode(responseApiError.HttpStatusCode, responseApiError);
+                }
+
+                return Ok(new ResponseApiSuccess { Code = 1, Message = "Noticia creada" });
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ResponseApiError { Code = 1001, Message = ex.Message });
+            }
         }
 
-        // PUT api/<NoticiasController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Update([FromBody] Noticias noticia, [FromRoute] int id)
         {
+            try
+            {
+                noticiasCore = new NoticiasCore(db);
+                ResponseApiError responseApiError = noticiasCore.Update(noticia, id);
+
+                if (responseApiError != null)
+                {
+                    return StatusCode(responseApiError.HttpStatusCode, responseApiError);
+                }
+
+                return Ok(new ResponseApiSuccess { Code = 1, Message = "Noticia modificada" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ResponseApiError { Code = 1001, Message = ex.Message });
+            }
+
         }
 
-        // DELETE api/<NoticiasController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete([FromRoute] int id)
         {
+            try
+            {
+                noticiasCore = new NoticiasCore(db);
+                ResponseApiError responseApiError = noticiasCore.Delete(id);
+
+                if (responseApiError != null)
+                {
+                    return StatusCode(responseApiError.HttpStatusCode, responseApiError);
+                }
+
+                return Ok(new ResponseApiSuccess { Code = 1, Message = "Noticia Eliminada" });
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ResponseApiError { Code = 1001, Message = ex.Message });
+            }
+
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetNoticiasUsuario([FromRoute] int id)
+        {
+            noticiasCore = new NoticiasCore(db);
+            noticiasCore.GetNoticiasUsuario(id);
+            return Ok();
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetNoticiasComentario([FromRoute] int id)
+        {
+            noticiasCore = new NoticiasCore(db);
+            noticiasCore.GetNoticiasComentarios(id);
+            return Ok();
         }
     }
 }

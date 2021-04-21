@@ -7,8 +7,10 @@ namespace PAPW2_PROJECT.Models.ViewModels
 {
     public class UsuariosPerfilView
     {
-        public string NombreCompleto { get; set; }
-        List<Perfiles> Perfiles { get; set; }
+        public string Name { get; set; }
+        public string Nombre { get; set; }
+        public string Mail { get; set; }
+        List<Perfiles> Perfil { get; set; }
 
     }
 }

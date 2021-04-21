@@ -90,7 +90,7 @@ namespace PAPW2_PROJECT.Controllers
                     return StatusCode(responseApiError.HttpStatusCode, responseApiError);
                 }
 
-                return Ok(new ResponseApiSuccess { Code = 1, Message = "Perfil Eliminado" });
+                return Ok(new ResponseApiSuccess { Code = 1, Message = "Usuario Eliminado" });
 
             }
             catch (Exception ex)

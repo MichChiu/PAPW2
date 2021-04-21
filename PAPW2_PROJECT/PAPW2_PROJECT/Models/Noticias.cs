@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace PAPW2_PROJECT.Models
@@ -38,7 +39,8 @@ namespace PAPW2_PROJECT.Models
         public int? visitas { get; set; }
 
         public string? comentarios_editor { get; set; } //no sigue el formato de nombres, tampoco en sql
-        #nullable disable
+#nullable disable
+        [JsonIgnore]
         public virtual Secciones Secciones { get; set; }
 
         public virtual Estatus Estatus { get; set; }

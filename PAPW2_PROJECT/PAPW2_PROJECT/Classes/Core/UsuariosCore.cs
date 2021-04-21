@@ -155,7 +155,16 @@ namespace PAPW2_PROJECT.Classes.Core
                                   Nombre=u.nombreUsuario,
                                   Mail=u.correoE,
                                   Perfil= p.tipo_Perfil
-                              });
+                              })
+                              
+                              /*.GroupBy(x=>(x.Name,x.Nombre,x.Mail))
+                              .Select(y=> new UsuariosPerfilView
+                              {
+                                  CompleteInfo=$"{y.Key.Name} {y.Key.Nombre} {y.Key.Mail}",
+                                  Perfil=y.Select(z=>z.Perfil)
+                              })*/
+                              .ToList();
+               
             }
             catch(Exception ex)
             {

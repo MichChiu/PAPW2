@@ -11,6 +11,9 @@ namespace PAPW2_PROJECT.Models
     {
         public DbSet<Perfiles>Perfiles { get; set; }
         public DbSet<Usuarios> Usuarios { get; set; }
+        public DbSet<Noticias> Noticias { get; set; }
+        public DbSet<Comentarios> Comentarios { get; set; }
+        public DbSet<Respuestas> Respuestas { get; set; }
 
 
         public PAPW2DbContext ()
@@ -163,8 +166,7 @@ namespace PAPW2_PROJECT.Models
                    .IsRequired();
                 noticias.Property(e => e.fecha_Publicacion)
                     .HasColumnType("datetime")
-                    .IsUnicode(false)
-                   .IsRequired();
+                    .IsUnicode(false);
                 noticias.Property(e => e.autor)
                    .IsRequired();
                 noticias.Property(e => e.titulo_Noticia)
@@ -195,32 +197,38 @@ namespace PAPW2_PROJECT.Models
                 noticias
                 .HasOne(e => e.Secciones)
                 .WithMany(y => y.Noticias)
-                .HasForeignKey("const_SeccionN");
+                .HasForeignKey(e=>e.seccion_Noticia);
+                //.HasForeignKey("const_SeccionN");
 
                 noticias
                 .HasOne(e => e.Estatus)
                 .WithMany(y => y.Noticias)
-                .HasForeignKey("const_EstatusN");
+                .HasForeignKey(e=>e.estatus_Noticia);
+                //.HasForeignKey("const_EstatusN");
 
                 noticias
                .HasOne(e => e.Paises)
                .WithMany(y => y.Noticias)
-               .HasForeignKey("const_PaisN");
+               .HasForeignKey(e=>e.paisF);
+                //.HasForeignKey("const_PaisN");
 
                 noticias
                 .HasOne(e => e.Ciudades)
                 .WithMany(y => y.Noticias)
-                .HasForeignKey("const_CiudadN");
+                .HasForeignKey(e=>e.ciudadF);
+                //.HasForeignKey("const_CiudadN");
 
                 noticias
                 .HasOne(e => e.Colonias)
                 .WithMany(y => y.Noticias)
-                .HasForeignKey("const_ColoniaN");
+                .HasForeignKey(e=>e.coloniaF);
+                //.HasForeignKey("const_ColoniaN");
 
                 noticias
                 .HasOne(e => e.Usuarios)
                 .WithMany(y => y.Noticias)
-                .HasForeignKey("const_AutN");
+                .HasForeignKey(e=> e.autor);
+                //.HasForeignKey("const_AutN");
             });
 
             modelBuilder.Entity<LikesUsuarios>(likesusuarios =>
