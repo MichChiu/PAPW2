@@ -69,7 +69,7 @@ namespace PAPW2_PROJECT.Classes.Core
         }
         public ResponseApiError ValidateExist(int id)
         {
-            bool existComentario = db.Comentarios.Any(x => x.que_Noticia == id);
+            bool existComentario = db.Comentarios.Any(x => x.iD_Comentarios== id);
             if (!existComentario)
             {
                 return new ResponseApiError { Code = 3, Message = "Doesnt exist", HttpStatusCode = (int)HttpStatusCode.NotFound };
@@ -111,10 +111,16 @@ namespace PAPW2_PROJECT.Classes.Core
                                 where c.iD_Comentarios == id
                                 select new RespuestasComentarioView
                                 {
-                                    Comentario=c.texto,
-                                    Respuesta=r.respuesta_Texto
+                                    Comentario = c.texto,
+                                    Respuesta = r.respuesta_Texto
+                                })
+                               /* .GroupBy(x => x.Comentario)
+                                .Select(y => new RespuestasComentarioView
+                                {
+                                    Respuestas = y.Select(z => z.Respuesta)
                                 }
-                              ).ToList();
+                                )*/
+                              .ToList();
 
                 return consulta;
             }

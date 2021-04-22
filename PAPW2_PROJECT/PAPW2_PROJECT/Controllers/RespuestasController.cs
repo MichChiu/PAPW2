@@ -52,7 +52,6 @@ namespace PAPW2_PROJECT.Controllers
             }
         }
 
-
         // DELETE api/<RespuestasController>/5
         [HttpDelete("{id}")]
         public IActionResult Delete([FromRoute] int id)
@@ -67,7 +66,7 @@ namespace PAPW2_PROJECT.Controllers
                     return StatusCode(responseApiError.HttpStatusCode, responseApiError);
                 }
 
-                return Ok(new ResponseApiSuccess { Code = 1, Message = "Noticia Eliminada" });
+                return Ok(new ResponseApiSuccess { Code = 1, Message = "Respuesta Eliminada" });
 
             }
             catch (Exception ex)

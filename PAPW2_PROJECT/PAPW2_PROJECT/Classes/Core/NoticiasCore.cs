@@ -152,10 +152,10 @@ namespace PAPW2_PROJECT.Classes.Core
                                     Noticias_Texto=n.texto_Noticia
                                 })
 
-                              /*.GroupBy(x=>(x.Name,x.Nombre,x.Mail))
-                              .Select(y=> new UsuariosPerfilView
+                             /* .GroupBy(x=>(x.Name,x.NombreUsuario))
+                              .Select(y=> new NoticiasUsuarioView
                               {
-                                  CompleteInfo=$"{y.Key.Name} {y.Key.Nombre} {y.Key.Mail}",
+                                  CompleteInfo=$"{y.Key.Name} {y.Key.Nombre}",
                                   Perfil=y.Select(z=>z.Perfil)
                               })*/
                               .ToList();

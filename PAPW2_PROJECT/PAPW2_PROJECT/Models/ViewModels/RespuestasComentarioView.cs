@@ -9,6 +9,6 @@ namespace PAPW2_PROJECT.Models.ViewModels
     {
         public string Comentario { get; set; }
         public string Respuesta { get; set; }
-        List<Respuestas> Respuestas { get; set; }
+        public List<Respuestas> Respuestas { get; set; }
     }
 }

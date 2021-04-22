@@ -11,7 +11,9 @@ namespace PAPW2_PROJECT.Models.ViewModels
         public string Nombre { get; set; }
         public string Mail { get; set; }
         public string Perfil { get; set; }
-        List<Perfiles> Perfiles { get; set; }
+
+        public string CompleteInfo { get; set; }
+        public List<Perfiles> Perfiles { get; set; }
 
     }
 }

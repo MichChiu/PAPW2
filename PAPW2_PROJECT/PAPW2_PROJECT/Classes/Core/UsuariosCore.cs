@@ -146,24 +146,24 @@ namespace PAPW2_PROJECT.Classes.Core
             {
                 UsuariosPerfilView usuariosPerfilView = new UsuariosPerfilView();
 
-                var consulta= (from p in db.Perfiles
-                              join u in db.Usuarios on p.iD_Perfil equals u.perfil
-                              where p.iD_Perfil==id
-                              select new UsuariosPerfilView
-                              {
-                                  Name=u.nombre,
-                                  Nombre=u.nombreUsuario,
-                                  Mail=u.correoE,
-                                  Perfil= p.tipo_Perfil
-                              })
-                              
-                              /*.GroupBy(x=>(x.Name,x.Nombre,x.Mail))
+                var consulta = (from p in db.Perfiles
+                                join u in db.Usuarios on p.iD_Perfil equals u.perfil
+                                where p.iD_Perfil == id
+                                select new UsuariosPerfilView
+                                {
+                                    Name = u.nombre,
+                                    Nombre = u.nombreUsuario,
+                                    Mail = u.correoE,
+                                    Perfil = p.tipo_Perfil
+                                })
+                                .ToList();
+                           /*   .GroupBy(x => (x.Name,x.Nombre,x.Mail)
                               .Select(y=> new UsuariosPerfilView
                               {
                                   CompleteInfo=$"{y.Key.Name} {y.Key.Nombre} {y.Key.Mail}",
                                   Perfil=y.Select(z=>z.Perfil)
-                              })*/
-                              .ToList();
+                              })
+                              .ToList();*/
                 return consulta;
                
             }

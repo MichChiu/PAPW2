@@ -12,6 +12,6 @@ namespace PAPW2_PROJECT.Models.ViewModels
         public int Noticias { get; set; }
         public string Noticias_Titulo { get; set; }
         public string Noticias_Texto { get; set; }
-        List <Noticias> Noticia { get; set; }
+        public List <Noticias> Noticia { get; set; }
     }
 }

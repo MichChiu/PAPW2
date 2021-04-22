@@ -68,7 +68,7 @@ namespace PAPW2_PROJECT.Controllers
                     return StatusCode(responseApiError.HttpStatusCode, responseApiError);
                 }
 
-                return Ok(new ResponseApiSuccess { Code = 1, Message = "Noticia Eliminada" });
+                return Ok(new ResponseApiSuccess { Code = 1, Message = "Comentario Eliminado" });
 
             }
             catch (Exception ex)
