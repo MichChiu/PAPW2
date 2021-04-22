@@ -104,16 +104,16 @@ namespace PAPW2_PROJECT.Controllers
         public IActionResult GetNoticiasUsuario([FromRoute] int id)
         {
             noticiasCore = new NoticiasCore(db);
-            noticiasCore.GetNoticiasUsuario(id);
-            return Ok();
+            List<NoticiasUsuarioView>noticias= noticiasCore.GetNoticiasUsuario(id);
+            return Ok(noticias);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetNoticiasComentario([FromRoute] int id)
         {
             noticiasCore = new NoticiasCore(db);
-            noticiasCore.GetNoticiasComentarios(id);
-            return Ok();
+            List<NoticiasComentarioView> comentarios= noticiasCore.GetNoticiasComentarios(id);
+            return Ok(comentarios);
         }
     }
 }

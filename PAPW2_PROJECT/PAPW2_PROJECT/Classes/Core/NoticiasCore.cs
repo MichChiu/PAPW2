@@ -134,7 +134,7 @@ namespace PAPW2_PROJECT.Classes.Core
                 throw ex;
             }
         }
-        public void GetNoticiasUsuario(int id)
+        public List<NoticiasUsuarioView> GetNoticiasUsuario(int id)
         {
             try
             {
@@ -143,7 +143,7 @@ namespace PAPW2_PROJECT.Classes.Core
                 var consulta = (from u in db.Usuarios
                                 join n in db.Noticias on u.iD_Usuario equals n.autor
                                 where u.iD_Usuario == id
-                                select new
+                                select new NoticiasUsuarioView
                                 {
                                     Name = u.nombre,
                                     NombreUsuario = u.nombreUsuario,
@@ -159,14 +159,14 @@ namespace PAPW2_PROJECT.Classes.Core
                                   Perfil=y.Select(z=>z.Perfil)
                               })*/
                               .ToList();
-                //return consulta;
+                return consulta;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
-        public void GetNoticiasComentarios(int id)
+        public List<NoticiasComentarioView> GetNoticiasComentarios(int id)
         {
             try
             {
@@ -175,15 +175,15 @@ namespace PAPW2_PROJECT.Classes.Core
                 var consulta = (from n in db.Noticias
                                 join c in db.Comentarios on n.iD_Noticia equals c.que_Noticia
                                 where n.iD_Noticia == id
-                                select new
+                                select new NoticiasComentarioView
                                 {
                                     Noticias = n.iD_Noticia,
                                     Noticias_Titulo = n.titulo_Noticia,
                                     Noticias_Texto = n.texto_Noticia,
-                                    Comentarios=c.texto
+                                    Comentario=c.texto
                                 })
                               .ToList();
-                //return consulta;
+                return consulta;
             }
             catch (Exception ex)
             {

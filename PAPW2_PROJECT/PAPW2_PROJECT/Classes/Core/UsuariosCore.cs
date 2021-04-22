@@ -140,7 +140,7 @@ namespace PAPW2_PROJECT.Classes.Core
             }
         }
 
-        public void GetUsuariosPerfil(int id)
+        public List<UsuariosPerfilView> GetUsuariosPerfil(int id)
         {
             try
             {
@@ -149,7 +149,7 @@ namespace PAPW2_PROJECT.Classes.Core
                 var consulta= (from p in db.Perfiles
                               join u in db.Usuarios on p.iD_Perfil equals u.perfil
                               where p.iD_Perfil==id
-                              select new
+                              select new UsuariosPerfilView
                               {
                                   Name=u.nombre,
                                   Nombre=u.nombreUsuario,
@@ -164,6 +164,7 @@ namespace PAPW2_PROJECT.Classes.Core
                                   Perfil=y.Select(z=>z.Perfil)
                               })*/
                               .ToList();
+                return consulta;
                
             }
             catch(Exception ex)

@@ -104,8 +104,8 @@ namespace PAPW2_PROJECT.Controllers
         public IActionResult GetUsuariosPerfil([FromRoute] int id)
         {
             usuariosCore = new UsuariosCore(db);
-            usuariosCore.GetUsuariosPerfil(id);
-            return Ok();
+            List<UsuariosPerfilView> usuarios= usuariosCore.GetUsuariosPerfil(id);
+            return Ok(usuarios);
         }
     }
 }

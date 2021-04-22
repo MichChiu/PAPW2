@@ -55,6 +55,18 @@ namespace PAPW2_PROJECT.Classes.Core
             }
 
         }
+        public List<Comentarios> GetAll()
+        {
+            try
+            {
+                return (from c in db.Comentarios select c).ToList();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public ResponseApiError ValidateExist(int id)
         {
             bool existComentario = db.Comentarios.Any(x => x.que_Noticia == id);
@@ -77,7 +89,6 @@ namespace PAPW2_PROJECT.Classes.Core
 
 
                 Comentarios comentario = db.Comentarios
-                    .Include(x => x.Noticias)
                     .FirstOrDefault(x => x.iD_Comentarios == id);
 
                 db.Remove(comentario);
@@ -88,6 +99,28 @@ namespace PAPW2_PROJECT.Classes.Core
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+        public List<RespuestasComentarioView> GetRespuestasComentarioViews(int id)
+        {
+            try
+            {
+                RespuestasComentarioView respuestasComentarioView = new RespuestasComentarioView();
+                var consulta = (from c in db.Comentarios
+                                join r in db.Respuestas on c.iD_Comentarios equals r.que_Comentario
+                                where c.iD_Comentarios == id
+                                select new RespuestasComentarioView
+                                {
+                                    Comentario=c.texto,
+                                    Respuesta=r.respuesta_Texto
+                                }
+                              ).ToList();
+
+                return consulta;
+            }
+            catch(Exception ex)
+            {
+                throw ex; 
             }
         }
     }

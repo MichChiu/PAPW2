@@ -263,11 +263,13 @@ namespace PAPW2_PROJECT.Models
                 comentarios
                 .HasOne(e => e.Noticias)
                 .WithMany(y => y.Comentarios)
-                .HasForeignKey("const_QueNoti");
+                .HasForeignKey(e=>e.que_Noticia);
+                //.HasForeignKey("const_QueNoti");
                 comentarios
                .HasOne(e => e.Usuarios)
                .WithMany(y => y.Comentarios)
-               .HasForeignKey("const_Coment_Aut");
+               .HasForeignKey(e=>e.autor);
+                //.HasForeignKey("const_Coment_Aut");
 
             });
 
@@ -310,11 +312,13 @@ namespace PAPW2_PROJECT.Models
                 respuestas
                 .HasOne(e => e.Comentarios)
                 .WithMany(y => y.Respuestas)
-                .HasForeignKey("const_QueComent");
+                .HasForeignKey(e=>e.que_Comentario);
+                //.HasForeignKey("const_QueComent");
                 respuestas
                .HasOne(e => e.Usuarios)
                .WithMany(y => y.Respuestas)
-               .HasForeignKey("const_Coment_AutRes");
+               .HasForeignKey(e=>e.autor);
+                //.HasForeignKey("const_Coment_AutRes");
 
             });
            

@@ -7,8 +7,11 @@ namespace PAPW2_PROJECT.Models.ViewModels
 {
     public class NoticiasUsuarioView
     {
-        public string nombre { get; set; }
-        public string nombreUsuario { get; set; }
+        public string Name { get; set; }
+        public string NombreUsuario { get; set; }
+        public int Noticias { get; set; }
+        public string Noticias_Titulo { get; set; }
+        public string Noticias_Texto { get; set; }
         List <Noticias> Noticia { get; set; }
     }
 }
