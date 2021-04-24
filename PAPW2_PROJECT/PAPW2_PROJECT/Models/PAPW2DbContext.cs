@@ -11,6 +11,7 @@ namespace PAPW2_PROJECT.Models
     {
         public DbSet<Perfiles>Perfiles { get; set; }
         public DbSet<Usuarios> Usuarios { get; set; }
+        public DbSet<Secciones> Secciones { get; set; }
         public DbSet<Noticias> Noticias { get; set; }
         public DbSet<Comentarios> Comentarios { get; set; }
         public DbSet<Respuestas> Respuestas { get; set; }
