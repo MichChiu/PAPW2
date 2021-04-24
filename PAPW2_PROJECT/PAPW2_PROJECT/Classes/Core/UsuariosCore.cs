@@ -88,8 +88,23 @@ namespace PAPW2_PROJECT.Classes.Core
 
                 Usuarios usuarioDb = db.Usuarios.First(x => x.iD_Usuario == id);
 
+                usuarioDb.nombre = usuario.nombre; 
+
+                usuarioDb.apellido = usuario.apellido; 
+
+                usuarioDb.pp = usuario.pp; 
+
+                usuarioDb.correoE = usuario.correoE; 
+
+                usuarioDb.contraseña = usuario.contraseña; 
+
                 usuarioDb.nombreUsuario = usuario.nombreUsuario;
 
+                usuarioDb.telefono = usuario.telefono;
+
+                usuarioDb.perfil = usuario.perfil; 
+
+                
 
                 db.Update(usuarioDb);
                 db.SaveChanges();

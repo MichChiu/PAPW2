@@ -87,8 +87,39 @@ namespace PAPW2_PROJECT.Classes.Core
 
                 Noticias noticiaEdit = db.Noticias.First(x => x.iD_Noticia == id);
 
+                noticiaEdit.paisF = noticia.paisF;
+
+                noticiaEdit.ciudadF = noticia.ciudadF;
+
+                noticiaEdit.coloniaF = noticia.coloniaF;
+
+                noticiaEdit.fecha_Hora_Acontecimiento = noticia.fecha_Hora_Acontecimiento;
+
+                noticiaEdit.fecha_Publicacion = noticia.fecha_Publicacion;
+
+                noticiaEdit.autor = noticia.autor;
+
+                noticiaEdit.titulo_Noticia = noticia.titulo_Noticia;
+
+                noticiaEdit.descripcion_Noticia = noticia.descripcion_Noticia;
+
                 noticiaEdit.texto_Noticia = noticia.texto_Noticia;
 
+                noticiaEdit.palabra_Clave = noticia.palabra_Clave;
+
+                noticiaEdit.seccion_Noticia = noticia.seccion_Noticia;
+
+                noticiaEdit.estatus_Noticia = noticia.estatus_Noticia;
+
+                noticiaEdit.likes = noticia.likes;
+
+                noticiaEdit.visitas = noticia.visitas;
+
+                noticiaEdit.comentarios_editor = noticia.comentarios_editor; 
+
+                noticiaEdit.texto_Noticia = noticia.texto_Noticia;
+
+                
 
                 db.Update(noticiaEdit);
                 db.SaveChanges();

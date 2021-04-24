@@ -87,6 +87,10 @@ namespace PAPW2_PROJECT.Classes.Core
 
                 seccionEdit.nombre_Seccion = seccion.nombre_Seccion;
 
+                seccionEdit.color = seccion.color;
+
+                seccionEdit.pos = seccion.pos; 
+
 
                 db.Update(seccionEdit);
                 db.SaveChanges();
