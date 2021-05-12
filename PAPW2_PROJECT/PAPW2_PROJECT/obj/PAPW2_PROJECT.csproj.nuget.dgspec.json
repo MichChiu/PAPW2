@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Aaron Reyes\\Desktop\\PAPW2\\PAPW2_PROJECT\\PAPW2_PROJECT\\PAPW2_PROJECT.csproj": {}
+    "C:\\Users\\Michelle Chiu Gonzal\\Documents\\8Sem\\PAPW2\\PROJECT\\PAPW2_PROJECT\\PAPW2_PROJECT\\PAPW2_PROJECT.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Aaron Reyes\\Desktop\\PAPW2\\PAPW2_PROJECT\\PAPW2_PROJECT\\PAPW2_PROJECT.csproj": {
+    "C:\\Users\\Michelle Chiu Gonzal\\Documents\\8Sem\\PAPW2\\PROJECT\\PAPW2_PROJECT\\PAPW2_PROJECT\\PAPW2_PROJECT.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Aaron Reyes\\Desktop\\PAPW2\\PAPW2_PROJECT\\PAPW2_PROJECT\\PAPW2_PROJECT.csproj",
+        "projectUniqueName": "C:\\Users\\Michelle Chiu Gonzal\\Documents\\8Sem\\PAPW2\\PROJECT\\PAPW2_PROJECT\\PAPW2_PROJECT\\PAPW2_PROJECT.csproj",
         "projectName": "PAPW2_PROJECT",
-        "projectPath": "C:\\Users\\Aaron Reyes\\Desktop\\PAPW2\\PAPW2_PROJECT\\PAPW2_PROJECT\\PAPW2_PROJECT.csproj",
-        "packagesPath": "C:\\Users\\Aaron Reyes\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Aaron Reyes\\Desktop\\PAPW2\\PAPW2_PROJECT\\PAPW2_PROJECT\\obj\\",
+        "projectPath": "C:\\Users\\Michelle Chiu Gonzal\\Documents\\8Sem\\PAPW2\\PROJECT\\PAPW2_PROJECT\\PAPW2_PROJECT\\PAPW2_PROJECT.csproj",
+        "packagesPath": "C:\\Users\\Michelle Chiu Gonzal\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Michelle Chiu Gonzal\\Documents\\8Sem\\PAPW2\\PROJECT\\PAPW2_PROJECT\\PAPW2_PROJECT\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Aaron Reyes\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Michelle Chiu Gonzal\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,27 +40,39 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[5.0.5, )"
+            },
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.5, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[5.0.4, )"
+              "version": "[5.0.5, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[5.0.4, )"
+              "version": "[5.0.5, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[5.0.4, )"
+              "version": "[5.0.5, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
-              "version": "[12.0.3, )"
+              "version": "[13.0.1, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.1.0, )"
+              "version": "[6.1.4, )"
             }
           },
           "imports": [
@@ -81,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
         }
       }
     }

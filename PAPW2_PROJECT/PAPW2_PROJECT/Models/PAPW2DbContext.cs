@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Protocols;
 using System;
 using System.Collections.Generic;
@@ -7,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PAPW2_PROJECT.Models
 {
-    public class PAPW2DbContext : DbContext
+    public class PAPW2DbContext : IdentityDbContext<Usuario>
     {
         public DbSet<Perfiles>Perfiles { get; set; }
         public DbSet<Usuarios> Usuarios { get; set; }
@@ -373,6 +375,48 @@ namespace PAPW2_PROJECT.Models
                 .HasOne(e => e.Noticias)
                 .WithMany(y => y.Imagenes)
                 .HasForeignKey("const_Vid_Noti");
+            });
+
+            modelBuilder.Entity<Usuario>(usuario =>
+            {
+                usuario.ToTable("AspNetUsers");
+                usuario.HasKey(e => e.Id);
+            });
+
+            modelBuilder.Entity<IdentityRole<string>>(entity =>
+            {
+                entity.ToTable("AspNetRoles");
+                entity.HasKey(e => e.Id);
+            });
+
+            modelBuilder.Entity<IdentityUserLogin<string>>(entity =>
+            {
+                entity.ToTable("AspNetUserLogins");
+                entity.HasKey("LoginProvider", "ProviderKey");
+            });
+
+            modelBuilder.Entity<IdentityRoleClaim<string>>(entity =>
+            {
+                entity.ToTable("AspNetRoleClaims");
+                entity.HasKey(e => e.Id);
+            });
+
+            modelBuilder.Entity<IdentityUserRole<string>>(entity =>
+            {
+                entity.ToTable("AspNetUserRoles");
+                entity.HasKey("UserId", "RoleId");
+            });
+
+            modelBuilder.Entity<IdentityUserToken<string>>(entity =>
+            {
+                entity.ToTable("AspNetUserTokens");
+                entity.HasKey("UserId", "LoginProvider");
+            });
+
+            modelBuilder.Entity<IdentityUserClaim<string>>(entity =>
+            {
+                entity.ToTable("AspNetUserClaims");
+                entity.HasKey(e => e.Id);
             });
 
         }

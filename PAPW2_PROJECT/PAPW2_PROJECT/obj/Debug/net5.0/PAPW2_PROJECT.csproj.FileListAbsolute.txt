@@ -88,3 +88,9 @@ C:\Users\Michelle Chiu Gonzal\Documents\8Sem\PAPW2\PROJECT\PAPW2_PROJECT\PAPW2_P
 C:\Users\Michelle Chiu Gonzal\Documents\8Sem\PAPW2\PROJECT\PAPW2_PROJECT\PAPW2_PROJECT\obj\Debug\net5.0\ref\PAPW2_PROJECT.dll
 C:\Users\Michelle Chiu Gonzal\Documents\8Sem\PAPW2\PROJECT\PAPW2_PROJECT\PAPW2_PROJECT\obj\Debug\net5.0\PAPW2_PROJECT.pdb
 C:\Users\Michelle Chiu Gonzal\Documents\8Sem\PAPW2\PROJECT\PAPW2_PROJECT\PAPW2_PROJECT\obj\Debug\net5.0\PAPW2_PROJECT.genruntimeconfig.cache
+C:\Users\Michelle Chiu Gonzal\Documents\8Sem\PAPW2\PROJECT\PAPW2_PROJECT\PAPW2_PROJECT\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Michelle Chiu Gonzal\Documents\8Sem\PAPW2\PROJECT\PAPW2_PROJECT\PAPW2_PROJECT\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Michelle Chiu Gonzal\Documents\8Sem\PAPW2\PROJECT\PAPW2_PROJECT\PAPW2_PROJECT\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\Michelle Chiu Gonzal\Documents\8Sem\PAPW2\PROJECT\PAPW2_PROJECT\PAPW2_PROJECT\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Michelle Chiu Gonzal\Documents\8Sem\PAPW2\PROJECT\PAPW2_PROJECT\PAPW2_PROJECT\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\Michelle Chiu Gonzal\Documents\8Sem\PAPW2\PROJECT\PAPW2_PROJECT\PAPW2_PROJECT\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
