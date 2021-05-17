@@ -43,7 +43,7 @@ namespace PAPW2_PROJECT.Classes.Core
         {
             try
             {
-                if (comentario.texto==null || comentario.autor < 0 || comentario.que_Noticia < 0)
+                if (comentario.texto==null || comentario.autor==null || comentario.que_Noticia < 0)
                 {
                     return new ResponseApiError { Code = 2, Message = "Invalid info", HttpStatusCode = (int)HttpStatusCode.BadRequest };
                 }

@@ -12,7 +12,7 @@ namespace PAPW2_PROJECT.Models
     public class PAPW2DbContext : IdentityDbContext<Usuario>
     {
         public DbSet<Perfiles>Perfiles { get; set; }
-        public DbSet<Usuarios> Usuarios { get; set; }
+       // public DbSet<Usuarios> Usuarios { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Secciones> Secciones { get; set; }
         public DbSet<Noticias> Noticias { get; set; }
@@ -40,7 +40,7 @@ namespace PAPW2_PROJECT.Models
                 .IsUnicode(false);
             });
 
-            modelBuilder.Entity<Usuarios>(usuarios=>
+         /*   modelBuilder.Entity<Usuarios>(usuarios=>
             {
                 usuarios.HasKey(e => e.iD_Usuario);
                 usuarios.Property(e => e.nombre)
@@ -80,7 +80,7 @@ namespace PAPW2_PROJECT.Models
                 //.HasForeignKey("const_Perfil")
                 .OnDelete(DeleteBehavior.ClientCascade);
             });
-
+         */
             modelBuilder.Entity<Colores>(colores =>
             {
                 colores.HasKey(e => e.iD_Color);
@@ -229,7 +229,7 @@ namespace PAPW2_PROJECT.Models
                 //.HasForeignKey("const_ColoniaN");
 
                 noticias
-                .HasOne(e => e.Usuarios)
+                .HasOne(e => e.Usuario)
                 .WithMany(y => y.Noticias)
                 .HasForeignKey(e=> e.autor);
                 //.HasForeignKey("const_AutN");
@@ -270,7 +270,7 @@ namespace PAPW2_PROJECT.Models
                 .HasForeignKey(e=>e.que_Noticia);
                 //.HasForeignKey("const_QueNoti");
                 comentarios
-               .HasOne(e => e.Usuarios)
+               .HasOne(e => e.Usuario)
                .WithMany(y => y.Comentarios)
                .HasForeignKey(e=>e.autor);
                 //.HasForeignKey("const_Coment_Aut");
@@ -319,7 +319,7 @@ namespace PAPW2_PROJECT.Models
                 .HasForeignKey(e=>e.que_Comentario);
                 //.HasForeignKey("const_QueComent");
                 respuestas
-               .HasOne(e => e.Usuarios)
+               .HasOne(e => e.Usuario)
                .WithMany(y => y.Respuestas)
                .HasForeignKey(e=>e.autor);
                 //.HasForeignKey("const_Coment_AutRes");

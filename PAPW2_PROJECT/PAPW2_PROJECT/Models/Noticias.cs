@@ -20,7 +20,7 @@ namespace PAPW2_PROJECT.Models
         #nullable enable
         public DateTime? fecha_Publicacion { get; set; }
         #nullable disable
-        public int autor { get; set; }
+        public string autor { get; set; }
 
         public string titulo_Noticia { get; set; }
 
@@ -51,7 +51,7 @@ namespace PAPW2_PROJECT.Models
 
         public virtual Colonias Colonias { get; set; }
 
-        public virtual Usuarios Usuarios { get; set; }
+        public virtual Usuario Usuario { get; set; }
 
         public virtual ICollection<Comentarios> Comentarios { get; set; }
 

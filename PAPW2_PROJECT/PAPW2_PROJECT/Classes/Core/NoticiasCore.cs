@@ -43,7 +43,7 @@ namespace PAPW2_PROJECT.Classes.Core
             try
             {
                 if (noticia.paisF < 0 || noticia.ciudadF < 0 || noticia.coloniaF < 0 || noticia.fecha_Hora_Acontecimiento.Year< 2021 ||
-                    noticia.autor < 0 || noticia.titulo_Noticia == null|| noticia.descripcion_Noticia==null || noticia.texto_Noticia==null ||
+                    noticia.autor ==null || noticia.titulo_Noticia == null|| noticia.descripcion_Noticia==null || noticia.texto_Noticia==null ||
                     noticia.palabra_Clave==null ||noticia.seccion_Noticia<0||noticia.estatus_Noticia<0)
                 {
                     return new ResponseApiError { Code = 2, Message = "Invalid info", HttpStatusCode = (int)HttpStatusCode.BadRequest };
@@ -152,7 +152,7 @@ namespace PAPW2_PROJECT.Classes.Core
 
 
                 Noticias noticia = db.Noticias
-                    .Include(x => x.Usuarios)
+                    .Include(x => x.Usuario)
                     .FirstOrDefault(x => x.iD_Noticia == id);
 
                 db.Remove(noticia);
@@ -165,19 +165,19 @@ namespace PAPW2_PROJECT.Classes.Core
                 throw ex;
             }
         }
-        public List<NoticiasUsuarioView> GetNoticiasUsuario(int id)
+        public List<NoticiasUsuarioView> GetNoticiasUsuario(string username)
         {
             try
             {
                 NoticiasUsuarioView noticiasUsuarioView = new NoticiasUsuarioView();
 
-                var consulta = (from u in db.Usuarios
-                                join n in db.Noticias on u.iD_Usuario equals n.autor
-                                where u.iD_Usuario == id
+                var consulta = (from u in db.Usuario
+                                join n in db.Noticias on u.Id equals n.autor
+                                where u.UserName == username
                                 select new NoticiasUsuarioView
                                 {
                                     Name = u.nombre,
-                                    NombreUsuario = u.nombreUsuario,
+                                    NombreUsuario = u.UserName,
                                     Noticias = n.iD_Noticia,
                                     Noticias_Titulo=n.titulo_Noticia,
                                     Noticias_Texto=n.texto_Noticia

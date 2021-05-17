@@ -100,11 +100,11 @@ namespace PAPW2_PROJECT.Controllers
 
         }
 
-        [HttpGet("{id}")]
-        public IActionResult GetNoticiasUsuario([FromRoute] int id)
+        [HttpGet("{username}")]
+        public IActionResult GetNoticiasUsuario([FromRoute] string username)
         {
             noticiasCore = new NoticiasCore(db);
-            List<NoticiasUsuarioView>noticias= noticiasCore.GetNoticiasUsuario(id);
+            List<NoticiasUsuarioView>noticias= noticiasCore.GetNoticiasUsuario(username);
             return Ok(noticias);
         }
 

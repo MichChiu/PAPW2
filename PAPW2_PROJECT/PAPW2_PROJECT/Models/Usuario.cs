@@ -12,5 +12,8 @@ namespace PAPW2_PROJECT.Models
         public string apellido { get; set; }
         public int perfil { get; set; }
         public virtual Perfiles Perfiles { get; set; }
+        public virtual ICollection<Noticias> Noticias { get; set; }
+        public virtual ICollection<Comentarios> Comentarios { get; set; }
+        public virtual ICollection<Respuestas> Respuestas { get; set; }
     }
 }
