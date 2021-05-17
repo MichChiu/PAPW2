@@ -247,7 +247,7 @@ namespace PAPW2_PROJECT.Models
                 .WithMany(y => y.LikesUsuarios)
                 .HasForeignKey("const_Like_Noti");
                 likesusuarios
-               .HasOne(e => e.Usuarios)
+               .HasOne(e => e.Usuario)
                .WithMany(y => y.LikesUsuarios)
                .HasForeignKey("const_Like_Usu");
 
@@ -287,7 +287,7 @@ namespace PAPW2_PROJECT.Models
                   noticiaComentarios.Property(e => e.iD_UsuarioF)
                   .IsRequired();
                   noticiaComentarios
-                  .HasOne(e => e.Usuarios)
+                  .HasOne(e => e.Usuario)
                   .WithMany(y => y.NoticiaComentarios)
                   .HasForeignKey("const_NotiComent_Usu");
                   noticiaComentarios
@@ -344,7 +344,7 @@ namespace PAPW2_PROJECT.Models
                 .WithMany(y => y.Comentario_Respuestas)
                 .HasForeignKey("const_ComRes_Respu");
                 comentario_Respuestas
-                .HasOne(e => e.Usuarios)
+                .HasOne(e => e.Usuario)
                 .WithMany(y => y.Comentario_Respuestas)
                 .HasForeignKey("const_ComRes_Usu");
 

@@ -13,7 +13,7 @@ namespace PAPW2_PROJECT.Models
 
         public int iD_UsuarioF { get; set; }
 
-        public virtual Usuarios Usuarios { get; set; }
+        public virtual Usuario Usuario { get; set; }
 
         public virtual Noticias Noticias { get; set; }
 

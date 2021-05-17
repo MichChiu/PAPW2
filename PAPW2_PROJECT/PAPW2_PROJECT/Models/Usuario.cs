@@ -13,7 +13,10 @@ namespace PAPW2_PROJECT.Models
         public int perfil { get; set; }
         public virtual Perfiles Perfiles { get; set; }
         public virtual ICollection<Noticias> Noticias { get; set; }
+        public virtual ICollection<LikesUsuarios> LikesUsuarios { get; set; }
         public virtual ICollection<Comentarios> Comentarios { get; set; }
+        public virtual ICollection<NoticiaComentarios> NoticiaComentarios { get; set; }
         public virtual ICollection<Respuestas> Respuestas { get; set; }
+        public virtual ICollection<Comentario_Respuestas> Comentario_Respuestas { get; set; }
     }
 }

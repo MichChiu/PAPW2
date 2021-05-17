@@ -13,6 +13,6 @@ namespace PAPW2_PROJECT.Models
 
         public virtual Noticias Noticias { get; set; }
 
-        public virtual Usuarios Usuarios { get; set; }
+        public virtual Usuario Usuario { get; set; }
     }
 }

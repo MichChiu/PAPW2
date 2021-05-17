@@ -9,7 +9,7 @@ namespace PAPW2_PROJECT.Models
     {
         public int iD_Perfil { get; set; }
         public string tipo_Perfil { get; set; }
-        public virtual ICollection<Usuarios> Usuarios { get; set; }
+       // public virtual ICollection<Usuarios> Usuarios { get; set; }
         public virtual ICollection<Usuario>Usuario { get; set; }
     }
 }
