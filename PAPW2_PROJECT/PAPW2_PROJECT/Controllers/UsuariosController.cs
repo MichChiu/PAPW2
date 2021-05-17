@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using PAPW2_PROJECT.Classes.Core;
 using PAPW2_PROJECT.Models;
 using PAPW2_PROJECT.Models.ViewModels;
@@ -23,45 +24,23 @@ namespace PAPW2_PROJECT.Controllers
         {
             this.db = db;
         }
-
+        [Authorize]
         // GET: api/<UsuariosController>
         [HttpGet]
         public IActionResult Get()
         {
             usuariosCore = new UsuariosCore(db);
-            List<Usuarios> usuarios = usuariosCore.GetAll();
+            List<Usuario> usuarios = usuariosCore.GetAll();
             return Ok(usuarios);
         }
 
-        [HttpPost]
-        public IActionResult Create([FromBody] Usuarios usuario)
+        [HttpPut("{username}")]
+        public IActionResult Update([FromBody] CreateUserRequest usuario, [FromRoute] string username)
         {
             try
             {
                 usuariosCore = new UsuariosCore(db);
-                ResponseApiError responseApiError = usuariosCore.Create(usuario);
-
-                if (responseApiError != null)
-                {
-                    return StatusCode(responseApiError.HttpStatusCode, responseApiError);
-                }
-
-                return Ok(new ResponseApiSuccess { Code = 1, Message = "Usuario creado" });
-
-            }
-            catch (Exception ex)
-            {
-                return StatusCode((int)HttpStatusCode.InternalServerError, new ResponseApiError { Code = 1001, Message = ex.Message });
-            }
-        }
-
-        [HttpPut("{id}")]
-        public IActionResult Update([FromBody] Usuarios usuario, [FromRoute] int id)
-        {
-            try
-            {
-                usuariosCore = new UsuariosCore(db);
-                ResponseApiError responseApiError = usuariosCore.Update(usuario, id);
+                ResponseApiError responseApiError = usuariosCore.Update(usuario, username);
 
                 if (responseApiError != null)
                 {
@@ -77,13 +56,13 @@ namespace PAPW2_PROJECT.Controllers
 
         }
 
-        [HttpDelete("{id}")]
-        public IActionResult Delete([FromRoute] int id)
+        [HttpDelete("{username}")]
+        public IActionResult Delete([FromRoute] string username)
         {
             try
             {
                 usuariosCore = new UsuariosCore(db);
-                ResponseApiError responseApiError = usuariosCore.Delete(id);
+                ResponseApiError responseApiError = usuariosCore.Delete(username);
 
                 if (responseApiError != null)
                 {

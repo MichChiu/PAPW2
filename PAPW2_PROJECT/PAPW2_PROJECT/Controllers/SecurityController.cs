@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using PAPW2_PROJECT.Classes.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using PAPW2_PROJECT.Models;
@@ -20,6 +21,8 @@ namespace PAPW2_PROJECT.Controllers
     [ApiController]
     public class SecurityController : ControllerBase
     {
+        private PAPW2DbContext db;
+        private UsuariosCore usuariosCore;
         private UserManager<Usuario> _userManager;
         private SignInManager<Usuario> _signInManager;
         private readonly IConfiguration _configuration;
@@ -31,16 +34,21 @@ namespace PAPW2_PROJECT.Controllers
             _configuration = configuration;
         }
 
-       // [Authorize]
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> CreateUser([FromBody] CreateUserRequest createUserRequest)
         {
             try
             {
+                usuariosCore = new UsuariosCore(db);
+                usuariosCore.Validate(createUserRequest);
                 var result = await _userManager.CreateAsync(new Usuario
                 {
+                    nombre=createUserRequest.nombre,
                     Email = createUserRequest.Email,
-                    UserName = createUserRequest.UserName
+                    UserName = createUserRequest.UserName,
+                    PhoneNumber=createUserRequest.PhoneNumber,
+                    perfil=createUserRequest.perfil
 
                 }, createUserRequest.Password);
                 if (!result.Succeeded)

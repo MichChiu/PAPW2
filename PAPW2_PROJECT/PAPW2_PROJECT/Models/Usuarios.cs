@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json.Serialization;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PAPW2_PROJECT.Models
 {
-    public class Usuarios
+    public class Usuarios: IdentityUser
     {
         public int iD_Usuario { get; set; }
         public string nombre { get; set; }

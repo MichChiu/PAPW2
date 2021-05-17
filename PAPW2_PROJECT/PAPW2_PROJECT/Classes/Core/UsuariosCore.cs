@@ -18,32 +18,14 @@ namespace PAPW2_PROJECT.Classes.Core
             this.db = db;
         }
 
-        public ResponseApiError Create(Usuarios usuario)
+     
+        public ResponseApiError Validate(CreateUserRequest createUserRequest)
         {
             try
             {
-                ResponseApiError responseApiError = Validate(usuario);
-                if (responseApiError != null)
-                {
-                    return responseApiError;
-                }
-
-                db.Add(usuario);
-                db.SaveChanges();
-
-                return null;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-        }
-        public ResponseApiError Validate(Usuarios usuario)
-        {
-            try
-            {
-                if (usuario.nombre == null || usuario.apellido==null || usuario.correoE==null || usuario.contraseña==null || usuario.nombreUsuario==null || usuario.telefono==null || usuario.perfil>4 )
+                if (createUserRequest.nombre == null || createUserRequest.apellido==null || createUserRequest.Email==null || createUserRequest.Password==null
+                       
+                    || createUserRequest.UserName==null || createUserRequest.PhoneNumber==null || createUserRequest.perfil>4 )
                 {
                     return new ResponseApiError { Code = 2, Message = "Invalid info", HttpStatusCode = (int)HttpStatusCode.BadRequest};
                 }
@@ -55,12 +37,12 @@ namespace PAPW2_PROJECT.Classes.Core
             }
 
         }
-        public List<Usuarios> GetAll()
+        public List<Usuario> GetAll()
         {
             try
             {
                 // return db.Usuarios.ToList();
-                return (from u in db.Usuarios
+                return (from u in db.Usuario
                         select u
                                            ).ToList();
 
@@ -70,39 +52,35 @@ namespace PAPW2_PROJECT.Classes.Core
                 throw ex;
             }
         }
-        public ResponseApiError Update(Usuarios usuario, int id)
+        public ResponseApiError Update(CreateUserRequest createUserRequest, string username)
         {
             try
             {
-                ResponseApiError responseApiError = Validate(usuario);
+                ResponseApiError responseApiError = Validate(createUserRequest);
                 if (responseApiError != null)
                 {
                     return responseApiError;
                 }
 
-                responseApiError = ValidateExist(id);
+                responseApiError = ValidateExist(username);
                 if (responseApiError != null)
                 {
                     return responseApiError;
                 }
 
-                Usuarios usuarioDb = db.Usuarios.First(x => x.iD_Usuario == id);
+                Usuario usuarioDb = db.Usuario.First(x => x.UserName == username);
 
-                usuarioDb.nombre = usuario.nombre; 
+                usuarioDb.nombre = createUserRequest.nombre; 
 
-                usuarioDb.apellido = usuario.apellido; 
+                usuarioDb.apellido = createUserRequest.apellido; 
 
-                usuarioDb.pp = usuario.pp; 
+                usuarioDb.Email = createUserRequest.Email; 
 
-                usuarioDb.correoE = usuario.correoE; 
+                usuarioDb.UserName = createUserRequest.UserName;
 
-                usuarioDb.contraseña = usuario.contraseña; 
+                usuarioDb.PhoneNumber = createUserRequest.PhoneNumber;
 
-                usuarioDb.nombreUsuario = usuario.nombreUsuario;
-
-                usuarioDb.telefono = usuario.telefono;
-
-                usuarioDb.perfil = usuario.perfil; 
+                usuarioDb.perfil = createUserRequest.perfil; 
 
                 
 
@@ -115,9 +93,9 @@ namespace PAPW2_PROJECT.Classes.Core
                 throw ex;
             }
         }
-        public ResponseApiError ValidateExist(int id)
+        public ResponseApiError ValidateExist(string username)
         {
-            bool existUsuarios = db.Usuarios.Any(x => x.iD_Usuario == id);
+            bool existUsuarios = db.Usuario.Any(x => x.UserName == username);
             if (!existUsuarios)
             {
                 return new ResponseApiError { Code = 3, Message = "Doesnt exist", HttpStatusCode = (int)HttpStatusCode.NotFound };
@@ -126,20 +104,19 @@ namespace PAPW2_PROJECT.Classes.Core
             return null;
 
         }
-        public ResponseApiError Delete(int id)
+        public ResponseApiError Delete(string username)
         {
             try
             {
-                ResponseApiError responseApiError = ValidateExist(id);
+                ResponseApiError responseApiError = ValidateExist(username);
                 if (responseApiError != null)
                 {
                     return responseApiError;
                 }
 
-             
-                 Usuarios usuario = db.Usuarios
+                 Usuario usuario = db.Usuario
                      .Include(x=>x.Perfiles)
-                     .FirstOrDefault(x => x.iD_Usuario== id);
+                     .FirstOrDefault(x => x.UserName == username);
 
                 // IQueryable<Perfiles> perfiles = db.Perfiles.Where(x => x.iD_Perfil == id); ESTO VA EN USUARIOS
                 //db.RemoveRange(perfiles);
@@ -162,13 +139,13 @@ namespace PAPW2_PROJECT.Classes.Core
                 UsuariosPerfilView usuariosPerfilView = new UsuariosPerfilView();
 
                 var consulta = (from p in db.Perfiles
-                                join u in db.Usuarios on p.iD_Perfil equals u.perfil
+                                join u in db.Usuario on p.iD_Perfil equals u.perfil
                                 where p.iD_Perfil == id
                                 select new UsuariosPerfilView
                                 {
                                     Name = u.nombre,
-                                    Nombre = u.nombreUsuario,
-                                    Mail = u.correoE,
+                                    Nombre = u.UserName,
+                                    Mail = u.Email,
                                     Perfil = p.tipo_Perfil
                                 })
                                 .ToList();

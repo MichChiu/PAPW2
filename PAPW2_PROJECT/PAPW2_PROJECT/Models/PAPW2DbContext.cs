@@ -13,6 +13,7 @@ namespace PAPW2_PROJECT.Models
     {
         public DbSet<Perfiles>Perfiles { get; set; }
         public DbSet<Usuarios> Usuarios { get; set; }
+        public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Secciones> Secciones { get; set; }
         public DbSet<Noticias> Noticias { get; set; }
         public DbSet<Comentarios> Comentarios { get; set; }
@@ -381,6 +382,16 @@ namespace PAPW2_PROJECT.Models
             {
                 usuario.ToTable("AspNetUsers");
                 usuario.HasKey(e => e.Id);
+
+                usuario.Property(e => e.perfil)
+                    .IsRequired();
+
+                usuario
+                .HasOne(e => e.Perfiles)
+                .WithMany(y => y.Usuario)
+                .HasForeignKey(e => e.perfil)
+                //.HasForeignKey("const_Perfil")
+                .OnDelete(DeleteBehavior.ClientCascade);
             });
 
             modelBuilder.Entity<IdentityRole<string>>(entity =>
