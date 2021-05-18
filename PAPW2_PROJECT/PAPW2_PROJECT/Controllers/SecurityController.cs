@@ -28,13 +28,8 @@ namespace PAPW2_PROJECT.Controllers
         private UserManager<Usuario> _userManager;
         private SignInManager<Usuario> _signInManager;
         private readonly IConfiguration _configuration;
-        Logger logger;
-
-        public SecurityController(PAPW2DbContext db)
-        {
-            this.db = db;
-            logger = NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
-        }
+        Logger logger = NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
+        
 
         public SecurityController(UserManager<Usuario> userManager, SignInManager<Usuario> signInManager, IConfiguration configuration)
         {
