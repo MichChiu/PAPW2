@@ -1,18 +1,47 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <img
+      src="../assets/banner.jpg"
+      alt="People"
+      style="width: 100%; height:250px"
+    />
+    <div class="md-layout md-alignment-center">
+      <md-button class="md-raised md-accent">Deportes</md-button>
+      <md-button class="md-raised md-accent">Espectaculos</md-button>
+      <md-button class="md-raised md-accent">Local</md-button>
+      <md-button class="md-raised md-accent">Internacional</md-button>
+      <md-button class="md-raised md-accent">Horoscopos</md-button>
+    </div>
+
+    <div class="md-layout md-alignment-center">
+      <h2>ULTIMAS NOTICIAS</h2>
+    </div>
+    <div class="md-layout md-alignment-center">
+      <cardNotice />
+      <cardNotice />
+      <cardNotice />
+      <cardNotice />
+    </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import cardNotice from '@/components/cardNotice.vue'
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld,
+    cardNotice,
   },
 }
 </script>
+
+<style>
+.md-card {
+  width: 320px;
+  margin: 4px;
+  display: inline-block;
+  vertical-align: top;
+}
+</style>
