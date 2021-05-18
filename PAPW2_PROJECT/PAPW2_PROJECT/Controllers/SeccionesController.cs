@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using NLog;
+using NLog.Web;
 using PAPW2_PROJECT.Classes.Core;
 using PAPW2_PROJECT.Models;
 using PAPW2_PROJECT.Models.ViewModels;
@@ -12,16 +15,19 @@ using System.Threading.Tasks;
 
 namespace PAPW2_PROJECT.Controllers
 {
+    [Authorize]
     [Route("api/[controller]/[action]")]
     [ApiController]
     public class SeccionesController : ControllerBase
     {
         private PAPW2DbContext db;
         private SeccionesCore seccionesCore;
+        Logger logger;
 
         public SeccionesController (PAPW2DbContext db)
         {
             this.db = db;
+            logger = NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
         }
 
         // GET: api/<SeccionesController>
@@ -51,6 +57,7 @@ namespace PAPW2_PROJECT.Controllers
             }
             catch (Exception ex)
             {
+                logger.Error(ex);
                 return StatusCode((int)HttpStatusCode.InternalServerError, new ResponseApiError { Code = 1001, Message = ex.Message });
             }
         }
@@ -72,6 +79,7 @@ namespace PAPW2_PROJECT.Controllers
             }
             catch (Exception ex)
             {
+                logger.Error(ex);
                 return StatusCode((int)HttpStatusCode.InternalServerError, new ResponseApiError { Code = 1001, Message = ex.Message });
             }
 
@@ -95,6 +103,7 @@ namespace PAPW2_PROJECT.Controllers
             }
             catch (Exception ex)
             {
+                logger.Error(ex);
                 return StatusCode((int)HttpStatusCode.InternalServerError, new ResponseApiError { Code = 1001, Message = ex.Message });
             }
 

@@ -14,6 +14,8 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using NLog;
+using NLog.Web;
 
 namespace PAPW2_PROJECT.Controllers
 {
@@ -26,6 +28,13 @@ namespace PAPW2_PROJECT.Controllers
         private UserManager<Usuario> _userManager;
         private SignInManager<Usuario> _signInManager;
         private readonly IConfiguration _configuration;
+        Logger logger;
+
+        public SecurityController(PAPW2DbContext db)
+        {
+            this.db = db;
+            logger = NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
+        }
 
         public SecurityController(UserManager<Usuario> userManager, SignInManager<Usuario> signInManager, IConfiguration configuration)
         {
@@ -34,7 +43,6 @@ namespace PAPW2_PROJECT.Controllers
             _configuration = configuration;
         }
 
-        [Authorize]
         [HttpPost]
         public async Task<IActionResult> CreateUser([FromBody] CreateUserRequest createUserRequest)
         {
@@ -59,6 +67,7 @@ namespace PAPW2_PROJECT.Controllers
             }
             catch (Exception ex)
             {
+                logger.Error(ex);
                 return StatusCode(500);
             }
         }
@@ -110,6 +119,7 @@ namespace PAPW2_PROJECT.Controllers
             }
             catch(Exception ex)
             {
+                logger.Error(ex);
                 return StatusCode(500);
             }
         }

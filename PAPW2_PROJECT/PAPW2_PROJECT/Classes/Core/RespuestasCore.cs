@@ -54,6 +54,18 @@ namespace PAPW2_PROJECT.Classes.Core
             }
 
         }
+        public List<Respuestas> GetAll()
+        {
+            try
+            {
+                return (from c in db.Respuestas select c).ToList();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public ResponseApiError ValidateExist(int id)
         {
             bool existRespuesta = db.Respuestas.Any(x => x.iD_Respuesta == id);

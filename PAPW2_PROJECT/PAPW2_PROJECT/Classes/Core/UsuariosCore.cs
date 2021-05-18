@@ -23,7 +23,7 @@ namespace PAPW2_PROJECT.Classes.Core
         {
             try
             {
-                if (createUserRequest.nombre == null || createUserRequest.apellido==null || createUserRequest.Email==null || createUserRequest.Password==null
+                if (createUserRequest.nombre == null || createUserRequest.apellido==null || createUserRequest.Email==null
                        
                     || createUserRequest.UserName==null || createUserRequest.PhoneNumber==null || createUserRequest.perfil>4 )
                 {
