@@ -16,7 +16,9 @@
         illo.
       </md-card-content>
       <md-card-actions>
-        <md-button>Leer mas..</md-button>
+        <router-link to="/ReadNotice">
+          <md-button>Leer mas..</md-button>
+        </router-link>
       </md-card-actions>
     </md-card>
   </div>
