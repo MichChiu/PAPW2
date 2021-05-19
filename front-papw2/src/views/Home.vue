@@ -6,7 +6,9 @@
       style="width: 100%; height:250px"
     />
     <div class="md-layout md-alignment-center">
-      <md-button class="md-raised md-accent">Deportes</md-button>
+      <router-link to="/NoticeByCategorie">
+        <md-button class="md-raised md-accent">Deportes</md-button>
+      </router-link>
       <md-button class="md-raised md-accent">Espectaculos</md-button>
       <md-button class="md-raised md-accent">Local</md-button>
       <md-button class="md-raised md-accent">Internacional</md-button>
