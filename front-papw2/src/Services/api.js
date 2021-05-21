@@ -32,22 +32,86 @@ export default {
     }
     return axios.post(ENDPOINT_PATH + 'security/login', loginUser)
   },
+  // New Notice
+  createNotice(
+    paisF,
+    ciudadF,
+    coloniaF,
+    fecha_Hora_Acontecimiento,
+    autor,
+    titulo_Noticia,
+    descripcion_Noticia,
+    texto_Noticia,
+    palabra_Clave,
+    seccion_Noticia,
+    estatus_Noticia,
+    comentarios_editor,
+    TokenAccess
+  ) {
+    let newNotice = {
+      paisF,
+      ciudadF,
+      coloniaF,
+      fecha_Hora_Acontecimiento,
+      autor,
+      titulo_Noticia,
+      descripcion_Noticia,
+      texto_Noticia,
+      palabra_Clave,
+      seccion_Noticia,
+      estatus_Noticia,
+      comentarios_editor,
+    }
+    return axios.post(ENDPOINT_PATH + 'Noticias/create', newNotice, {
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: 'Bearer ' + TokenAccess,
+      },
+    })
+  },
+  getAllNoticias(AccesToken) {
+    return axios.get(ENDPOINT_PATH + 'Noticias/Get', {
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: 'Bearer ' + AccesToken,
+      },
+    })
+  },
   // GetSecciones------------------------------------------------------------------
   getAllSecci(AccesToken) {
-    console.log(AccesToken, 'aca le llega')
-    // let config = {
-    //   headers: { Authorization: `Bearer ${AccesToken}` },
-    // }
-    // return axios({
-    //   method: 'get', //you can set what request you want to be
-    //   url: ENDPOINT_PATH + 'Usuarios/Get',
-    //   config,
-    // })
     return axios.get(ENDPOINT_PATH + 'Secciones/Get', {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
         Authorization: 'Bearer ' + AccesToken,
+      },
+    })
+  },
+  // GetAllComents
+  getAllComents(AccesToken) {
+    return axios.get(ENDPOINT_PATH + 'Comentarios/Get', {
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: 'Bearer ' + AccesToken,
+      },
+    })
+  },
+
+  createComent(texto, autor, que_Noticia, TokenAccess) {
+    let newNotice = {
+      texto,
+      autor,
+      que_Noticia,
+      TokenAccess,
+    }
+    return axios.post(ENDPOINT_PATH + 'Comentarios/create', newNotice, {
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: 'Bearer ' + TokenAccess,
       },
     })
   },

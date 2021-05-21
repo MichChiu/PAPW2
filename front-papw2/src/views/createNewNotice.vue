@@ -66,10 +66,13 @@
         <div class="md-layout-item md-small-size-100">
           <md-field>
             <label>Seccion</label>
-            <md-select v-model="noticeSeccion">
-              <md-option value="1">Editor</md-option>
-              <md-option value="2">Usuario</md-option>
-              <md-option value="3">Reportero</md-option>
+            <md-select v-model="noticeSeccionValue">
+              <md-option
+                v-for="Seccion in noticeSeccion"
+                :key="Seccion.iD_Seccion"
+                :value="Seccion.iD_Seccion"
+                >{{ Seccion.nombre_Seccion }}</md-option
+              >
             </md-select>
           </md-field>
         </div>
@@ -100,7 +103,7 @@
       </div>
     </md-card-content>
     <md-card-actions class="md-layout md-alignment-center">
-      <md-button style="background-color: cadetblue;" @click="callPrueba"
+      <md-button style="background-color: cadetblue;" @click="callNotice"
         >Create Notice</md-button
       >
     </md-card-actions>
@@ -118,15 +121,42 @@ export default {
     noticePais: '',
     noticeCiudad: '',
     noticeSeccion: '',
+    noticeSeccionValue: '',
     noticeColonia: '',
     barer: localStorage.getItem('barerToken'),
   }),
   methods: {
-    async callPrueba() {
+    async callNotice() {
       try {
-        let response = await service.getAllSecci(this.barer)
-        console.log(response.data, response)
-        // watch.sessionActive = true
+        // var dateNotice = Date().UTC
+        await service.createNotice(
+          this.noticePais,
+          this.noticeCiudad,
+          this.noticeColonia,
+          '2021-01-04T17:16:40',
+          '440e3b21-f0a5-4b32-8848-dc5017c47424',
+          this.noticeTitle,
+          this.noticeDescription,
+          this.noticeContent,
+          this.noticeClave,
+          this.noticeSeccionValue,
+          '3',
+          'Todo muy cool',
+          this.barer
+          //     pais,
+          // ciudad,
+          // colonia,
+          // fecha_Hora_Acontecimiento,
+          // autor,
+          // titulo_Noticia,
+          // descripcion_Noticia,
+          // texto_Noticia,
+          // palabra_Clave,
+          // seccion_Noticia,
+          // estatus_Noticia,
+          // comentarios_editor
+        )
+        console.log('Se creo con exito')
       } catch (error) {
         console.log(error)
       }
@@ -136,6 +166,7 @@ export default {
     try {
       let response = await service.getAllSecci(this.barer)
       console.log(response.data)
+      this.noticeSeccion = response.data
     } catch (err) {
       console.log(err)
     }

@@ -19,10 +19,19 @@
       <h2>ULTIMAS NOTICIAS</h2>
     </div>
     <div class="md-layout md-alignment-center">
-      <cardNotice />
-      <cardNotice />
-      <cardNotice />
-      <cardNotice />
+      <cardNotice
+        v-for="noticia in allnotices"
+        :key="noticia.iD_Noticia"
+        :titulo_Noticia="noticia.titulo_Noticia"
+        :seccion_Noticia="noticia.seccion_Noticia"
+        :descripcion_Noticia="noticia.descripcion_Noticia"
+        :iD_Noticia="noticia.iD_Noticia"
+        :ciudadF="noticia.ciudadF"
+        :coloniaF="noticia.coloniaF"
+        :paisF="noticia.paisF"
+        :texto_Noticia="noticia.texto_Noticia"
+        :autor="noticia.autor"
+      />
     </div>
   </div>
 </template>
@@ -30,11 +39,24 @@
 <script>
 // @ is an alias to /src
 import cardNotice from '@/components/cardNotice.vue'
-
+import service from '../Services/api'
 export default {
   name: 'Home',
   components: {
     cardNotice,
+  },
+  data: () => ({
+    allnotices: '',
+    barer: localStorage.getItem('barerToken'),
+  }),
+  async mounted() {
+    try {
+      let response = await service.getAllNoticias(this.barer)
+      console.log(response.data)
+      this.allnotices = response.data
+    } catch (err) {
+      console.log(err)
+    }
   },
 }
 </script>

@@ -6,18 +6,29 @@
       </md-card-media>
 
       <md-card-header>
-        <div class="md-title">Titulo Mamadon</div>
-        <div class="md-subhead">Categoria</div>
+        <div class="md-title">{{ titulo_Noticia }}</div>
+        <div class="md-subhead">{{ seccion_Noticia }}</div>
       </md-card-header>
 
-      <md-card-content>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio itaque
-        ea, nostrum odio. Dolores, sed accusantium quasi non, voluptas eius
-        illo.
-      </md-card-content>
+      <md-card-content> {{ descripcion_Noticia }} </md-card-content>
       <md-card-actions>
         <router-link to="/ReadNotice">
-          <md-button>Leer mas..</md-button>
+          <md-button
+            @click="
+              clickNoticia(
+                titulo_Noticia,
+                seccion_Noticia,
+                descripcion_Noticia,
+                iD_Noticia,
+                ciudadF,
+                coloniaF,
+                paisF,
+                texto_Noticia,
+                autor
+              )
+            "
+            >Leer mas..</md-button
+          >
         </router-link>
       </md-card-actions>
     </md-card>
@@ -30,9 +41,51 @@
 
 export default {
   name: 'Home',
-  components: {
-    // HelloWorld,
+  components: {},
+  props: [
+    'titulo_Noticia',
+    'seccion_Noticia',
+    'descripcion_Noticia',
+    'iD_Noticia',
+    'ciudadF',
+    'coloniaF',
+    'paisF',
+    'texto_Noticia',
+    'autor',
+  ],
+  data: () => ({
+    noticiaAct: '',
+    prueba: 'me piro',
+    barer: localStorage.getItem('barerToken'),
+  }),
+  methods: {
+    clickNoticia(
+      titulo_Noticia,
+      seccion_Noticia,
+      descripcion_Noticia,
+      iD_Noticia,
+      ciudadF,
+      coloniaF,
+      paisF,
+      texto_Noticia,
+      autor
+    ) {
+      let noticiaActiva = {
+        titulo_Noticia,
+        seccion_Noticia,
+        descripcion_Noticia,
+        iD_Noticia,
+        ciudadF,
+        coloniaF,
+        paisF,
+        texto_Noticia,
+        autor,
+      }
+      localStorage.setItem('NoticiaActiva', JSON.stringify(noticiaActiva))
+      console.log('datos', noticiaActiva)
+    },
   },
+  mounted() {},
 }
 </script>
 
