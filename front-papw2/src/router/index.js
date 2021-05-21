@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+// import Home from '../views/Home.vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
@@ -10,17 +10,18 @@ Vue.use(VueAxios, axios)
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home,
+    name: 'login',
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../views/LoginUser.vue'),
   },
   {
-    path: '/loginUser',
-    name: 'Login',
+    path: '/Home',
+    name: 'Home',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ '../views/LoginUser.vue'),
+      import(/* webpackChunkName: "about" */ '../views/Home.vue'),
   },
   {
     path: '/ReadNotice',
@@ -39,6 +40,15 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ '../views/NoticesbyCategorie.vue'),
+  },
+  {
+    path: '/createNewNotice',
+    name: 'createNewNotice',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../views/createNewNotice.vue'),
   },
 ]
 

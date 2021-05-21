@@ -1,23 +1,12 @@
 <template>
   <div class="page-container md-layout-column">
     <md-toolbar class="md-primary">
-      <md-button
-        class="md-icon-button"
-        @click="showNavigation = true"
-        v-if="sessionActive"
-      >
+      <md-button class="md-icon-button" @click="showNavigation = true">
         <md-icon>menu</md-icon>
       </md-button>
-      <router-link to="/">
+      <router-link to="/Home">
         <span class="md-title">Artic-Noticias</span>
       </router-link>
-      <div class="md-toolbar-section-end">
-        <md-button v-if="sessionActive">Nombre Usuario</md-button>
-
-        <router-link v-else to="/loginUser"
-          ><md-button>Inicia Sesion</md-button></router-link
-        >
-      </div>
     </md-toolbar>
 
     <md-drawer :md-active.sync="showNavigation" md-swipeable>
@@ -28,15 +17,17 @@
       <md-list>
         <md-list-item>
           <md-icon>move_to_inbox</md-icon>
-          <span class="md-list-item-text">Inbox</span>
+          <span class="md-list-item-text">Mis Noticias</span>
         </md-list-item>
 
         <md-list-item>
           <md-icon>send</md-icon>
-          <span class="md-list-item-text">Sent Mail</span>
+          <router-link to="/createNewNotice">
+            <span class="">Crear Noticia</span>
+          </router-link>
         </md-list-item>
 
-        <md-list-item>
+        <!-- <md-list-item>
           <md-icon>delete</md-icon>
           <span class="md-list-item-text">Trash</span>
         </md-list-item>
@@ -44,7 +35,7 @@
         <md-list-item>
           <md-icon>error</md-icon>
           <span class="md-list-item-text">Spam</span>
-        </md-list-item>
+        </md-list-item> -->
       </md-list>
     </md-drawer>
     <router-view></router-view>
@@ -83,13 +74,18 @@
 </template>
 
 <script>
+// import watch from '../src/watch'
 export default {
   name: 'Navbar',
   data: () => ({
     showNavigation: false,
     showSidepanel: false,
-    sessionActive: false,
   }),
+  // computed: {
+  //   sessionActive: function() {
+  //     return watch.sessionActive
+  //   },
+  // },
 }
 </script>
 
