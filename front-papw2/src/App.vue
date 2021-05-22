@@ -17,13 +17,19 @@
       <md-list>
         <md-list-item>
           <md-icon>move_to_inbox</md-icon>
-          <span class="md-list-item-text">Mis Noticias</span>
+          <router-link to="/MyNews">
+            <span class="md-list-item-text md-title" @click="editNewState"
+              >Mis Noticias</span
+            >
+          </router-link>
         </md-list-item>
 
         <md-list-item>
           <md-icon>send</md-icon>
-          <router-link to="/createNewNotice">
-            <span class="">Crear Noticia</span>
+          <router-link to="/createNewnew">
+            <span class="md-list-item-text md-title" @click="createNewState"
+              >Crear Noticia</span
+            >
           </router-link>
         </md-list-item>
 
@@ -81,11 +87,14 @@ export default {
     showNavigation: false,
     showSidepanel: false,
   }),
-  // computed: {
-  //   sessionActive: function() {
-  //     return watch.sessionActive
-  //   },
-  // },
+  methods: {
+    createNewState() {
+      localStorage.setItem('editNew', 1)
+    },
+    editNewState() {
+      localStorage.setItem('editNew', 2)
+    },
+  },
 }
 </script>
 

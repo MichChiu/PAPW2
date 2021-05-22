@@ -2,7 +2,7 @@
   <div class="page-container">
     <md-app>
       <md-app-toolbar class="md-primary">
-        <span class="md-title">{{ showNotice.titulo_Noticia }}</span>
+        <span class="md-title">{{ showNew.titulo_Noticia }}</span>
       </md-app-toolbar>
 
       <!-- Sidebar informacion del usuario / autor de la noticia -->
@@ -14,7 +14,7 @@
           </md-card-media>
         </div>
         <p>
-          {{ showNotice.texto_Noticia }}
+          {{ showNew.texto_Noticia }}
         </p>
         <h3 style="padding-top:3rem">
           COMENTARIOS---------------------------------
@@ -54,34 +54,32 @@
         <md-list>
           <md-list-item>
             <span class="md-list-item-text">Autor:</span>
-            <span class="md-list-item-text">{{ showNotice.autor }}</span>
+            <span class="md-list-item-text">{{ showNew.autor }}</span>
           </md-list-item>
 
           <md-list-item>
             <span class="md-list-item-text">Seccion:</span>
-            <span class="md-list-item-text">{{
-              showNotice.seccion_Noticia
-            }}</span>
+            <span class="md-list-item-text">{{ showNew.seccion_Noticia }}</span>
           </md-list-item>
 
           <md-list-item>
             <span class="md-list-item-text">Ciudad:</span>
-            <span class="md-list-item-text">{{ showNotice.ciudadF }}</span>
+            <span class="md-list-item-text">{{ showNew.ciudadF }}</span>
           </md-list-item>
 
           <md-list-item>
             <span class="md-list-item-text">Colonia:</span>
-            <span class="md-list-item-text">{{ showNotice.coloniaF }}</span>
+            <span class="md-list-item-text">{{ showNew.coloniaF }}</span>
           </md-list-item>
 
           <md-list-item>
             <span class="md-list-item-text">Pais:</span>
-            <span class="md-list-item-text">{{ showNotice.paisF }}</span>
+            <span class="md-list-item-text">{{ showNew.paisF }}</span>
           </md-list-item>
 
           <md-list-item>
             <span class="md-list-item-text">Fecha:</span>
-            <span class="md-list-item-text">{{ showNotice.Fecha }}</span>
+            <span class="md-list-item-text">{{ showNew.Fecha }}</span>
           </md-list-item>
         </md-list>
       </md-app-drawer>
@@ -92,20 +90,20 @@
 <script>
 import service from '../Services/api'
 export default {
-  name: 'AllNotice',
+  name: 'AllNew',
   components: {},
   data: () => ({
     barer: localStorage.getItem('barerToken'),
-    showNotice: '',
+    showNew: '',
     comentsall: '',
     thisComents: [],
     comentText: '',
   }),
   async mounted() {
-    this.showNotice = JSON.parse(localStorage.getItem('NoticiaActiva'))
-    // this.showNotice = JSON.parse(this.showNotice)
-    console.log(this.showNotice, 'hola')
-    console.log(this.showNotice.autor, 'datoespecifico')
+    this.showNew = JSON.parse(localStorage.getItem('NoticiaActiva'))
+    // this.showNew = JSON.parse(this.showNew)
+    console.log(this.showNew, 'hola')
+    console.log(this.showNew.autor, 'datoespecifico')
 
     try {
       let response = await service.getAllComents(this.barer)
@@ -117,7 +115,7 @@ export default {
 
     for (var i = 0; i < this.comentsall.length; i++) {
       // console.log(this.comentsall[i])
-      if (this.comentsall[i].que_Noticia === this.showNotice.iD_Noticia) {
+      if (this.comentsall[i].que_Noticia === this.showNew.iD_Noticia) {
         this.thisComents.push(this.comentsall[i])
       }
     }
@@ -131,7 +129,7 @@ export default {
         await service.createComent(
           this.comentText,
           '89f4483d-1681-4ec0-9909-1a896fe6c863',
-          this.showNotice.iD_Noticia,
+          this.showNew.iD_Noticia,
           this.barer
         )
         location.reload()

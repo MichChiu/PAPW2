@@ -8,24 +8,24 @@
       style="width:75%;margin: auto; padding-top:2rem"
       class="md-layout md-alignment-center"
     >
-      <cardNotice />
-      <cardNotice />
-      <cardNotice />
-      <cardNotice />
-      <cardNotice />
-      <cardNotice />
+      <cardNew />
+      <cardNew />
+      <cardNew />
+      <cardNew />
+      <cardNew />
+      <cardNew />
     </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import cardNotice from '@/components/cardNotice.vue'
+import cardNew from '@/components/cardnew.vue'
 
 export default {
-  name: 'NoticesByCategorie',
+  name: 'NewsByCategorie',
   components: {
-    cardNotice,
+    cardNew,
   },
 }
 </script>

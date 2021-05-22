@@ -12,7 +12,32 @@
 
       <md-card-content> {{ descripcion_Noticia }} </md-card-content>
       <md-card-actions>
-        <router-link to="/ReadNotice">
+        <div v-if="stateNew == 2">
+          <md-button
+            class="md-icon-button"
+            @click="
+              clickNoticia(
+                titulo_Noticia,
+                seccion_Noticia,
+                descripcion_Noticia,
+                iD_Noticia,
+                ciudadF,
+                coloniaF,
+                paisF,
+                texto_Noticia,
+                autor
+              )
+            "
+          >
+            <router-link to="/createNewnew">
+              <md-icon>move_to_inbox</md-icon>
+            </router-link>
+          </md-button>
+          <md-button class="md-icon-button">
+            <md-icon>delete</md-icon>
+          </md-button>
+        </div>
+        <router-link to="/Readnew">
           <md-button
             @click="
               clickNoticia(
@@ -54,9 +79,8 @@ export default {
     'autor',
   ],
   data: () => ({
-    noticiaAct: '',
-    prueba: 'me piro',
     barer: localStorage.getItem('barerToken'),
+    stateNew: localStorage.getItem('editNew'),
   }),
   methods: {
     clickNoticia(
@@ -81,7 +105,11 @@ export default {
         texto_Noticia,
         autor,
       }
-      localStorage.setItem('NoticiaActiva', JSON.stringify(noticiaActiva))
+      if (this.stateNew == 2) {
+        localStorage.setItem('NoticiaEditar', JSON.stringify(noticiaActiva))
+      } else {
+        localStorage.setItem('NoticiaActiva', JSON.stringify(noticiaActiva))
+      }
       console.log('datos', noticiaActiva)
     },
   },

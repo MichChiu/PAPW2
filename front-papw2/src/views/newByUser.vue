@@ -1,26 +1,15 @@
 <template>
   <div class="home">
-    <img
-      src="../assets/banner.jpg"
-      alt="People"
-      style="width: 100%; height:250px"
-    />
     <div class="md-layout md-alignment-center">
-      <router-link to="/NewByCategorie">
-        <md-button class="md-raised md-accent">Deportes</md-button>
-      </router-link>
-      <md-button class="md-raised md-accent">Espectaculos</md-button>
-      <md-button class="md-raised md-accent">Local</md-button>
-      <md-button class="md-raised md-accent">Internacional</md-button>
-      <md-button class="md-raised md-accent">Horoscopos</md-button>
+      <h1>Mis Noticias</h1>
     </div>
 
-    <div class="md-layout md-alignment-center">
-      <h2>ULTIMAS NOTICIAS</h2>
-    </div>
-    <div class="md-layout md-alignment-center">
+    <div
+      style="width:75%;margin: auto; padding-top:2rem"
+      class="md-layout md-alignment-center"
+    >
       <cardNew
-        v-for="noticia in allNews"
+        v-for="noticia in myNews"
         :key="noticia.iD_Noticia"
         :titulo_Noticia="noticia.titulo_Noticia"
         :seccion_Noticia="noticia.seccion_Noticia"
@@ -41,13 +30,15 @@
 import cardNew from '@/components/cardnew.vue'
 import service from '../Services/api'
 export default {
-  name: 'Home',
+  name: 'NewsByCategorie',
   components: {
     cardNew,
   },
   data: () => ({
+    myNews: [],
     allNews: '',
     barer: localStorage.getItem('barerToken'),
+    userActivade: '440e3b21-f0a5-4b32-8848-dc5017c47424',
   }),
   async mounted() {
     try {
@@ -57,7 +48,11 @@ export default {
     } catch (err) {
       console.log(err)
     }
-    localStorage.setItem('editNew', 0)
+    for (var i = 0; i < this.allNews.length; i++) {
+      if (this.allNews[i].autor == this.userActivade) {
+        this.myNews.push(this.allNews[i])
+      }
+    }
   },
 }
 </script>

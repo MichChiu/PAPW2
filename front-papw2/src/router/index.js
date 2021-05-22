@@ -24,31 +24,40 @@ const routes = [
       import(/* webpackChunkName: "about" */ '../views/Home.vue'),
   },
   {
-    path: '/ReadNotice',
-    name: 'ReadNotice',
+    path: '/Readnew',
+    name: 'Readnew',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ '../views/AllNotice.vue'),
+      import(/* webpackChunkName: "about" */ '../views/AllNew.vue'),
   },
   {
-    path: '/NoticeByCategorie',
-    name: 'NoticeByCategorie',
+    path: '/newByCategorie',
+    name: 'newByCategorie',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ '../views/NoticesbyCategorie.vue'),
+      import(/* webpackChunkName: "about" */ '../views/newsbyCategorie.vue'),
   },
   {
-    path: '/createNewNotice',
-    name: 'createNewNotice',
+    path: '/createNewnew',
+    name: 'createNewnew',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ '../views/createNewNotice.vue'),
+      import(/* webpackChunkName: "about" */ '../views/createNewnew.vue'),
+  },
+  {
+    path: '/MyNews',
+    name: 'MyNews',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../views/newByUser'),
   },
 ]
 

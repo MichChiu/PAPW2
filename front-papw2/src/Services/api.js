@@ -32,8 +32,8 @@ export default {
     }
     return axios.post(ENDPOINT_PATH + 'security/login', loginUser)
   },
-  // New Notice
-  createNotice(
+  // New New
+  createNew(
     paisF,
     ciudadF,
     coloniaF,
@@ -48,7 +48,7 @@ export default {
     comentarios_editor,
     TokenAccess
   ) {
-    let newNotice = {
+    let newNew = {
       paisF,
       ciudadF,
       coloniaF,
@@ -62,7 +62,7 @@ export default {
       estatus_Noticia,
       comentarios_editor,
     }
-    return axios.post(ENDPOINT_PATH + 'Noticias/create', newNotice, {
+    return axios.post(ENDPOINT_PATH + 'Noticias/create', newNew, {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
@@ -101,13 +101,13 @@ export default {
   },
 
   createComent(texto, autor, que_Noticia, TokenAccess) {
-    let newNotice = {
+    let newNew = {
       texto,
       autor,
       que_Noticia,
       TokenAccess,
     }
-    return axios.post(ENDPOINT_PATH + 'Comentarios/create', newNotice, {
+    return axios.post(ENDPOINT_PATH + 'Comentarios/create', newNew, {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
