@@ -79,6 +79,55 @@ export default {
       },
     })
   },
+  // EditNew------------------------------------------------------------------------
+  editNew(
+    iD_Noticia,
+    paisF,
+    ciudadF,
+    coloniaF,
+    fecha_Hora_Acontecimiento,
+    autor,
+    titulo_Noticia,
+    descripcion_Noticia,
+    texto_Noticia,
+    palabra_Clave,
+    seccion_Noticia,
+    estatus_Noticia,
+    comentarios_editor,
+    TokenAccess
+  ) {
+    let editnew = {
+      paisF,
+      ciudadF,
+      coloniaF,
+      fecha_Hora_Acontecimiento,
+      autor,
+      titulo_Noticia,
+      descripcion_Noticia,
+      texto_Noticia,
+      palabra_Clave,
+      seccion_Noticia,
+      estatus_Noticia,
+      comentarios_editor,
+    }
+    return axios.put(ENDPOINT_PATH + 'Noticias/update/' + iD_Noticia, editnew, {
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: 'Bearer ' + TokenAccess,
+      },
+    })
+  },
+  // DeleteNew --------------------------------------------------------------------------
+  deleteNew(iD_Noticia, TokenAccess) {
+    return axios.delete(ENDPOINT_PATH + 'Noticias/delete/' + iD_Noticia, {
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: 'Bearer ' + TokenAccess,
+      },
+    })
+  },
   // GetSecciones------------------------------------------------------------------
   getAllSecci(AccesToken) {
     return axios.get(ENDPOINT_PATH + 'Secciones/Get', {
@@ -99,7 +148,7 @@ export default {
       },
     })
   },
-
+  // Create a coment ----------------------------------------------------------------
   createComent(texto, autor, que_Noticia, TokenAccess) {
     let newNew = {
       texto,
@@ -108,6 +157,29 @@ export default {
       TokenAccess,
     }
     return axios.post(ENDPOINT_PATH + 'Comentarios/create', newNew, {
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: 'Bearer ' + TokenAccess,
+      },
+    })
+  },
+  // Create a new Seccion ------------------------------------------------------------
+  createSeccion(nombre_Seccion, TokenAccess) {
+    let newSeccion = {
+      nombre_Seccion,
+      color: 2,
+    }
+    return axios.post(ENDPOINT_PATH + 'Secciones/Create/', newSeccion, {
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: 'Bearer ' + TokenAccess,
+      },
+    })
+  },
+  deleteSeccion(iD_seccion, TokenAccess) {
+    return axios.delete(ENDPOINT_PATH + 'Secciones/Delete/' + iD_seccion, {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',

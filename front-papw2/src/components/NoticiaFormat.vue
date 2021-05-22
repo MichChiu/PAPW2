@@ -156,16 +156,26 @@ export default {
           'Todo muy cool',
           this.barer
         )
-        console.log('Se modifico con exito')
-        this.$router.push('/home')
+        this.$swal({
+          icon: 'success',
+          title: 'Se creo con exito tu noticia!',
+          preConfirm: () => {
+            this.$router.push('/home')
+          },
+        })
       } catch (error) {
+        this.$swal({
+          icon: 'error',
+          title: 'Oh no algo ocurrio vuelve a intentar',
+          preConfirm: () => {},
+        })
         console.log(error)
       }
     },
     async editNew() {
       try {
-        await service.createNew(
-          this.editNew.iD_Noticia,
+        await service.editNew(
+          this.newEdit.iD_Noticia,
           this.newPais,
           this.newCiudad,
           this.newColonia,
@@ -180,9 +190,20 @@ export default {
           'Todo muy cool',
           this.barer
         )
-        console.log('Se creo con exito')
+        this.$swal({
+          icon: 'success',
+          title: 'Se modifico con exito tu noticia!',
+          preConfirm: () => {
+            this.$router.push('/home')
+          },
+        })
         this.$router.push('/home')
       } catch (error) {
+        this.$swal({
+          icon: 'error',
+          title: 'Oh no algo ocurrio vuelve a intentar',
+          preConfirm: () => {},
+        })
         console.log(error)
       }
     },
@@ -207,6 +228,7 @@ export default {
         (this.newSeccionValue = this.newEdit.seccion_Noticia),
         (this.newColonia = this.newEdit.coloniaF)
     }
+    console.log(this.newEdit.iD_Noticia, 'od', this.editNew)
   },
 }
 </script>

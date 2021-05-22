@@ -7,12 +7,14 @@
     />
     <div class="md-layout md-alignment-center">
       <router-link to="/NewByCategorie">
-        <md-button class="md-raised md-accent">Deportes</md-button>
+        <md-button
+          class="md-raised md-accent"
+          v-for="seccion in allSecciones"
+          :key="seccion.iD_Seccion"
+          @click="wichSection(seccion.iD_Seccion, seccion.nombre_Seccion)"
+          >{{ seccion.nombre_Seccion }}</md-button
+        >
       </router-link>
-      <md-button class="md-raised md-accent">Espectaculos</md-button>
-      <md-button class="md-raised md-accent">Local</md-button>
-      <md-button class="md-raised md-accent">Internacional</md-button>
-      <md-button class="md-raised md-accent">Horoscopos</md-button>
     </div>
 
     <div class="md-layout md-alignment-center">
@@ -47,8 +49,16 @@ export default {
   },
   data: () => ({
     allNews: '',
+    allSecciones: [],
     barer: localStorage.getItem('barerToken'),
   }),
+
+  methods: {
+    wichSection(id, name) {
+      localStorage.setItem('idSeccion', id)
+      localStorage.setItem('nameSeccion', name)
+    },
+  },
   async mounted() {
     try {
       let response = await service.getAllNoticias(this.barer)
@@ -57,7 +67,15 @@ export default {
     } catch (err) {
       console.log(err)
     }
+    try {
+      let response = await service.getAllSecci(this.barer)
+      console.log(response.data)
+      this.allSecciones = response.data
+    } catch (err) {
+      console.log(err)
+    }
     localStorage.setItem('editNew', 0)
+    console.log(this.allSecciones, 'secciones')
   },
 }
 </script>

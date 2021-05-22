@@ -132,9 +132,19 @@ export default {
           this.showNew.iD_Noticia,
           this.barer
         )
-        location.reload()
+        this.$swal({
+          icon: 'success',
+          title: 'Se creo sin problemas tu comentario',
+          preConfirm: () => {
+            location.reload()
+          },
+        })
       } catch (error) {
-        console.log(error)
+        this.$swal({
+          icon: 'error',
+          title: 'Oh no algo ocurrio vuelve a intentar',
+          preConfirm: () => {},
+        })
       }
     },
   },

@@ -153,7 +153,6 @@
         </md-card-actions>
       </md-card>
     </form>
-    <!-- <button @click="callGetUsers()">PRUEBA</button> -->
   </div>
 </template>
 
@@ -178,14 +177,6 @@ export default {
     result: '',
   }),
   methods: {
-    async callGetUsers() {
-      try {
-        let response = await service.getAllUsers()
-        console.log(response.data, 'data')
-      } catch (error) {
-        console.log(error, 'errorr')
-      }
-    },
     createStateUser() {
       this.createUser = true
       this.login = false
@@ -206,9 +197,19 @@ export default {
           this.userPerfil,
           this.userContra
         )
+        this.$swal({
+          icon: 'success',
+          title: 'Se creo exitosamente',
+          preConfirm: () => {},
+        })
         this.login = true
         this.createUser = false
       } catch (error) {
+        this.$swal({
+          icon: 'error',
+          title: 'Oh no algo ocurrio vuelve a intentar',
+          preConfirm: () => {},
+        })
         console.log(error)
       }
     },
@@ -224,9 +225,20 @@ export default {
         localStorage.setItem('barerToken', response.data)
         localStorage.setItem('userActive', this.userUserName)
         localStorage.setItem('activateSession', 1)
-        this.$router.push('/home')
+        this.$swal({
+          icon: 'success',
+          title: 'Exitoso',
+          preConfirm: () => {
+            this.$router.push('/home')
+          },
+        })
         // watch.sessionActive = true
       } catch (error) {
+        this.$swal({
+          icon: 'error',
+          title: 'Oh no algo ocurrio vuelve a intentar',
+          preConfirm: () => {},
+        })
         console.log(error)
       }
     },
@@ -253,6 +265,3 @@ export default {
   vertical-align: top;
 }
 </style>
-
-async register() { try { await auth.register(this.email, this.password);
-this.$router.push("/") } catch (error) { console.log(error); } }

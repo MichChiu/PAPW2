@@ -33,7 +33,7 @@
               <md-icon>move_to_inbox</md-icon>
             </router-link>
           </md-button>
-          <md-button class="md-icon-button">
+          <md-button class="md-icon-button" @click="deleteNewM">
             <md-icon>delete</md-icon>
           </md-button>
         </div>
@@ -63,7 +63,7 @@
 <script>
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
-
+import service from '../Services/api'
 export default {
   name: 'Home',
   components: {},
@@ -111,6 +111,29 @@ export default {
         localStorage.setItem('NoticiaActiva', JSON.stringify(noticiaActiva))
       }
       console.log('datos', noticiaActiva)
+    },
+    deleteNewM() {
+      this.$swal({
+        icon: 'warning',
+        title: 'Seguro que quieres eliminar esta noticia carnal?',
+        showCancelButton: true,
+        preConfirm: () => {
+          this.$router.push('/home')
+          try {
+            service.deleteNew(this.iD_Noticia, this.barer)
+            this.$swal({
+              icon: 'success',
+              title: 'Exitoso',
+              preConfirm: () => {
+                this.$router.push('/home')
+              },
+            })
+          } catch (error) {
+            console.log(error)
+          }
+        },
+      })
+      console.log('Se elimino con exito') // this.$router.push('/home')
     },
   },
   mounted() {},
