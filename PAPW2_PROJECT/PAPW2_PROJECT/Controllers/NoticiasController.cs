@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -41,11 +42,13 @@ namespace PAPW2_PROJECT.Controllers
 
         [HttpPost]
         public IActionResult Create([FromBody] Noticias noticia)
-        {
+        { 
+            Claim userIdClaim = User.Claims.FirstOrDefault(x => x.Type.Contains("nameIdentifier"));
+            string userId = userIdClaim.Value;
             try
             {
                 noticiasCore = new NoticiasCore(db);
-                ResponseApiError responseApiError = noticiasCore.Create(noticia);
+                ResponseApiError responseApiError = noticiasCore.Create(noticia,userId);
 
                 if (responseApiError != null)
                 {
@@ -65,10 +68,12 @@ namespace PAPW2_PROJECT.Controllers
         [HttpPut("{id}")]
         public IActionResult Update([FromBody] Noticias noticia, [FromRoute] int id)
         {
+            Claim userIdClaim = User.Claims.FirstOrDefault(x => x.Type.Contains("nameIdentifier"));
+            string userId = userIdClaim.Value;
             try
             {
                 noticiasCore = new NoticiasCore(db);
-                ResponseApiError responseApiError = noticiasCore.Update(noticia, id);
+                ResponseApiError responseApiError = noticiasCore.Update(noticia, id, userId);
 
                 if (responseApiError != null)
                 {

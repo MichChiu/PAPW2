@@ -17,16 +17,16 @@ namespace PAPW2_PROJECT.Classes.Core
         {
             this.db = db;
         }
-        public ResponseApiError Create(Noticias noticia)
+        public ResponseApiError Create(Noticias noticia, string userId)
         {
             try
             {
-                ResponseApiError responseApiError = Validate(noticia);
+                ResponseApiError responseApiError = Validate(noticia, userId);
                 if (responseApiError != null)
                 {
                     return responseApiError;
                 }
-
+                noticia.autor = userId;
                 db.Add(noticia);
                 db.SaveChanges();
 
@@ -38,12 +38,11 @@ namespace PAPW2_PROJECT.Classes.Core
             }
 
         }
-        public ResponseApiError Validate(Noticias noticia)
+        public ResponseApiError Validate(Noticias noticia, string userId)
         {
             try
             {
-                if (noticia.paisF < 0 || noticia.ciudadF < 0 || noticia.coloniaF < 0 || noticia.fecha_Hora_Acontecimiento.Year< 2021 ||
-                    noticia.autor ==null || noticia.titulo_Noticia == null|| noticia.descripcion_Noticia==null || noticia.texto_Noticia==null ||
+                if (noticia.paisF < 0 || noticia.ciudadF < 0 || noticia.coloniaF < 0 || noticia.fecha_Hora_Acontecimiento.Year< 2021 || noticia.titulo_Noticia == null|| noticia.descripcion_Noticia==null || noticia.texto_Noticia==null ||
                     noticia.palabra_Clave==null ||noticia.seccion_Noticia<0||noticia.estatus_Noticia<0)
                 {
                     return new ResponseApiError { Code = 2, Message = "Invalid info", HttpStatusCode = (int)HttpStatusCode.BadRequest };
@@ -69,11 +68,11 @@ namespace PAPW2_PROJECT.Classes.Core
                 throw ex;
             }
         }
-        public ResponseApiError Update(Noticias noticia, int id)
+        public ResponseApiError Update(Noticias noticia, int id, string userId)
         {
             try
             {
-                ResponseApiError responseApiError = Validate(noticia);
+                ResponseApiError responseApiError = Validate(noticia, userId);
                 if (responseApiError != null)
                 {
                     return responseApiError;
@@ -96,8 +95,6 @@ namespace PAPW2_PROJECT.Classes.Core
                 noticiaEdit.fecha_Hora_Acontecimiento = noticia.fecha_Hora_Acontecimiento;
 
                 noticiaEdit.fecha_Publicacion = noticia.fecha_Publicacion;
-
-                noticiaEdit.autor = noticia.autor;
 
                 noticiaEdit.titulo_Noticia = noticia.titulo_Noticia;
 

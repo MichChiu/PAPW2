@@ -17,16 +17,16 @@ namespace PAPW2_PROJECT.Classes.Core
         {
             this.db = db;
         }
-        public ResponseApiError Create(Respuestas respuesta)
+        public ResponseApiError Create(Respuestas respuesta, string userId)
         {
             try
             {
-                ResponseApiError responseApiError = Validate(respuesta);
+                ResponseApiError responseApiError = Validate(respuesta, userId);
                 if (responseApiError != null)
                 {
                     return responseApiError;
                 }
-
+                respuesta.autor = userId;
                 db.Add(respuesta);
                 db.SaveChanges();
 
@@ -38,11 +38,11 @@ namespace PAPW2_PROJECT.Classes.Core
             }
 
         }
-        public ResponseApiError Validate(Respuestas respuesta)
+        public ResponseApiError Validate(Respuestas respuesta, string userId)
         {
             try
             {
-                if ( respuesta.respuesta_Texto == null || respuesta.autor ==null || respuesta.que_Comentario < 0)
+                if ( respuesta.respuesta_Texto == null || respuesta.que_Comentario < 0)
                 {
                     return new ResponseApiError { Code = 2, Message = "Invalid info", HttpStatusCode = (int)HttpStatusCode.BadRequest };
                 }

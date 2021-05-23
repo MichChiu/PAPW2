@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -42,10 +43,12 @@ namespace PAPW2_PROJECT.Controllers
         [HttpPost]
         public IActionResult Create([FromBody] Comentarios comentario)
         {
+            Claim userIdClaim = User.Claims.FirstOrDefault(x => x.Type.Contains("nameIdentifier"));
+            string userId = userIdClaim.Value; 
             try
             {
                 comentariosCore = new ComentariosCore(db);
-                ResponseApiError responseApiError = comentariosCore.Create(comentario);
+                ResponseApiError responseApiError = comentariosCore.Create(comentario, userId);
 
                 if (responseApiError != null)
                 {

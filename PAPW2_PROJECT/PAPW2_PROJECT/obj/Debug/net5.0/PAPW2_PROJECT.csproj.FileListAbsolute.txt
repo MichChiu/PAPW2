@@ -98,3 +98,13 @@ C:\Users\Michelle Chiu Gonzal\Documents\8Sem\PAPW2\PROJECT\PAPW2_PROJECT\PAPW2_P
 C:\Users\Michelle Chiu Gonzal\Documents\8Sem\PAPW2\PROJECT\PAPW2_PROJECT\PAPW2_PROJECT\bin\Debug\net5.0\NLog.dll
 C:\Users\Michelle Chiu Gonzal\Documents\8Sem\PAPW2\PROJECT\PAPW2_PROJECT\PAPW2_PROJECT\bin\Debug\net5.0\NLog.Extensions.Logging.dll
 C:\Users\Michelle Chiu Gonzal\Documents\8Sem\PAPW2\PROJECT\PAPW2_PROJECT\PAPW2_PROJECT\bin\Debug\net5.0\NLog.Web.AspNetCore.dll
+C:\Users\Aaron Reyes\Desktop\PAPW2\PAPW2_PROJECT\PAPW2_PROJECT\obj\Debug\net5.0\PAPW2_PROJECT.csprojAssemblyReference.cache
+C:\Users\Aaron Reyes\Desktop\PAPW2\PAPW2_PROJECT\PAPW2_PROJECT\obj\Debug\net5.0\PAPW2_PROJECT.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Aaron Reyes\Desktop\PAPW2\PAPW2_PROJECT\PAPW2_PROJECT\obj\Debug\net5.0\PAPW2_PROJECT.AssemblyInfoInputs.cache
+C:\Users\Aaron Reyes\Desktop\PAPW2\PAPW2_PROJECT\PAPW2_PROJECT\obj\Debug\net5.0\PAPW2_PROJECT.AssemblyInfo.cs
+C:\Users\Aaron Reyes\Desktop\PAPW2\PAPW2_PROJECT\PAPW2_PROJECT\obj\Debug\net5.0\PAPW2_PROJECT.csproj.CoreCompileInputs.cache
+C:\Users\Aaron Reyes\Desktop\PAPW2\PAPW2_PROJECT\PAPW2_PROJECT\obj\Debug\net5.0\PAPW2_PROJECT.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Aaron Reyes\Desktop\PAPW2\PAPW2_PROJECT\PAPW2_PROJECT\obj\Debug\net5.0\PAPW2_PROJECT.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Aaron Reyes\Desktop\PAPW2\PAPW2_PROJECT\PAPW2_PROJECT\obj\Debug\net5.0\PAPW2_PROJECT.dll
+C:\Users\Aaron Reyes\Desktop\PAPW2\PAPW2_PROJECT\PAPW2_PROJECT\obj\Debug\net5.0\ref\PAPW2_PROJECT.dll
+C:\Users\Aaron Reyes\Desktop\PAPW2\PAPW2_PROJECT\PAPW2_PROJECT\obj\Debug\net5.0\PAPW2_PROJECT.pdb
