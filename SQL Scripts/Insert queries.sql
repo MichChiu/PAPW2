@@ -6,11 +6,11 @@ insert into Colores(nombre_Color) values ('#FF6666');
 insert into Colores(nombre_Color) values ('#FFB266'); 
 insert into Colores(nombre_Color) values ('#FFFF66'); 
 
-insert into Estatus (nombre_Estatus) values ('En redacciÛn');
+insert into Estatus (nombre_Estatus) values ('En redacci√≥n');
 insert into Estatus (nombre_Estatus) values ('Terminada');
 insert into Estatus (nombre_Estatus) values ('Publicada');
 
-Insert into Paises (nombre_Pais) values ('MÈxico');
+Insert into Paises (nombre_Pais) values ('M√©xico');
 Insert into Paises (nombre_Pais) values ('Estados Unidos');
 Insert into Paises (nombre_Pais) values ('Canada');
 
@@ -19,7 +19,7 @@ Insert into Ciudades (iD_PaisF, nombre_Ciudad) values (1, 'CDMX');
 Insert into Ciudades (iD_PaisF, nombre_Ciudad) values (1, 'Guadalajara');
 Insert into Ciudades (iD_PaisF, nombre_Ciudad) values (2, 'Washington');
 Insert into Ciudades (iD_PaisF, nombre_Ciudad) values (2, 'New York');
-Insert into Ciudades (iD_PaisF, nombre_Ciudad) values (2, 'Los ¡ngeles');
+Insert into Ciudades (iD_PaisF, nombre_Ciudad) values (2, 'Los √Ångeles');
 Insert into Ciudades (iD_PaisF, nombre_Ciudad) values (3, 'Toronto');
 Insert into Ciudades (iD_PaisF, nombre_Ciudad) values (3, 'Vancouver');
 
@@ -30,12 +30,3 @@ insert into Colonias (iD_CiudadF, nombre_Colonia) values ( 8, 'Downtown');
 
 insert into Secciones(nombre_Seccion,color) values ('Entretenimiento',1);
 insert into Secciones(nombre_Seccion,color) values ('Torneo',2);
-
-select * from Noticias
-select * from Usuarios
-select * from Comentarios
-
-insert into Noticias (paisF,ciudadF,coloniaF,fecha_Hora_Acontecimiento,autor,titulo_Noticia,descripcion_Noticia,texto_Noticia,palabra_Clave,seccion_Noticia,estatus_Noticia)
-values (2,1,1,'2021-01-04T17:16:40',3,'test tituloSQL','test descripcionSQL','test texto SQL','test claveSQL',2,1);
-
-insert into Comentarios (texto,autor,que_Noticia) values ('test SQL',7,12);
