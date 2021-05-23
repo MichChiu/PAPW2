@@ -57,6 +57,19 @@ _Dí cómo será ese paso_
 ```
 3.- Ejecutar de principio a fin el script
 ```
+```
+4.- Abrir el archivo Insert queries.sql
+```
+```
+5.- Ejecutar de principio a fin el script para ingresar información en la base de datos
+```
+```
+6.- Abrir el archivo CREATE_Table Identity_ALTER relacionales.sql
+```
+```
+7.- Ejecutar de principio a fin el script para modificaciones en la base de datos PAPW2
+```
+```
 
 
 ## Construido con 🛠️
@@ -71,7 +84,7 @@ _Menciona las herramientas que utilizaste para crear tu proyecto_
 
 ## Autores ✒️
 
-* **Ileana Michelle Chiu González** - *Programadora Back-End* - 
+* **Ileana Michelle Chiu González** - *Programador Back-End* - 
 * **Cynthia Berenice Torres Regalado** - *Programadora Front-End* - 
 * **Aarón Guillermo Reyes Pacheco** - *Programador Back-End* -
 * **Luis Gerardo Rodriguez Garcia** - *Trabajo inicial / Desarrollo en SQL* -
