@@ -69,8 +69,6 @@ _Dí cómo será ese paso_
 ```
 7.- Ejecutar de principio a fin el script para modificaciones en la base de datos PAPW2
 ```
-```
-
 
 ## Construido con 🛠️
 
