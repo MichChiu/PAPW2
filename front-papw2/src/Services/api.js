@@ -38,7 +38,6 @@ export default {
     ciudadF,
     coloniaF,
     fecha_Hora_Acontecimiento,
-    autor,
     titulo_Noticia,
     descripcion_Noticia,
     texto_Noticia,
@@ -53,7 +52,6 @@ export default {
       ciudadF,
       coloniaF,
       fecha_Hora_Acontecimiento,
-      autor,
       titulo_Noticia,
       descripcion_Noticia,
       texto_Noticia,
@@ -86,7 +84,6 @@ export default {
     ciudadF,
     coloniaF,
     fecha_Hora_Acontecimiento,
-    autor,
     titulo_Noticia,
     descripcion_Noticia,
     texto_Noticia,
@@ -101,7 +98,6 @@ export default {
       ciudadF,
       coloniaF,
       fecha_Hora_Acontecimiento,
-      autor,
       titulo_Noticia,
       descripcion_Noticia,
       texto_Noticia,
@@ -149,10 +145,9 @@ export default {
     })
   },
   // Create a coment ----------------------------------------------------------------
-  createComent(texto, autor, que_Noticia, TokenAccess) {
+  createComent(texto, que_Noticia, TokenAccess) {
     let newNew = {
       texto,
-      autor,
       que_Noticia,
       TokenAccess,
     }

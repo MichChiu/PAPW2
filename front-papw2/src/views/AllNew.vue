@@ -128,7 +128,6 @@ export default {
       try {
         await service.createComent(
           this.comentText,
-          '89f4483d-1681-4ec0-9909-1a896fe6c863',
           this.showNew.iD_Noticia,
           this.barer
         )
